@@ -7,10 +7,18 @@ import cinema_project.model.dao.CinemaDao;
 
 public class CinemaService {
 	private CinemaDao cd = new CinemaDao();
-
+	// 회원 탈퇴
 	public int deleteUser(String pw) {
 		Connection conn = getConnection();
 		int result = cd.deleteUser(conn,pw);
+		close(conn);
+		return result;
+	}
+	
+	// 회원 정보 수정
+	public int editUser(String pw) {
+		Connection conn = getConnection();
+		int result = cd.editUser(conn,pw);
 		close(conn);
 		return result;
 	}

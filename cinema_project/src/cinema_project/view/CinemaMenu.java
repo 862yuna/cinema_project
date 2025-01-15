@@ -3,6 +3,7 @@ package cinema_project.view;
 import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;
+import cinema_project.model.vo.MovieVo;
 import cinema_project.model.vo.UserVo;
 
 public class CinemaMenu {
@@ -201,7 +202,31 @@ public class CinemaMenu {
 	
 	// 영화 정보 추가
 	public void insertMovie() {
-		System.out.println();
-		System.out.println("영화 추가할래요");
+		System.out.println("*** 영화 정보 추가 ***");
+		System.out.println("조건에 맞게 입력해주세요.");
+		System.out.print("제목 : ");
+		String movieTitle = sc.nextLine();
+			
+		System.out.print("러닝타임(숫자) : ");
+		int movieRuntime = sc.nextInt();
+		sc.nextLine();
+			
+		System.out.print("연령제한(All, 15, 19) : ");
+		String ageLimit = sc.nextLine();
+		
+		System.out.print("가격(숫자) : ");
+		int moviePrice = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("누적 관객수(숫자) : ");
+		int watched = sc.nextInt();
+		
+		MovieVo movie = cc.chkMovieByTitle(movieTitle);
+		
+		if(movie != null) {
+			System.out.println("이미 해당 영화명을 가진 영화가 존재합니다.");
+		} else {
+			System.out.println("영화 추가가 가능합니다.");
+		}
 	}
 }

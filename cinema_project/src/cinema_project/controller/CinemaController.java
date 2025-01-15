@@ -9,7 +9,7 @@ public class CinemaController {
 		return 0;
 	}
 	public int deleteUser(String pw) {
-		return 0;
+		return cs.deleteUser(pw);
 	}
 
 }

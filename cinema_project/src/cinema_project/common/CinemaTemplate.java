@@ -35,7 +35,7 @@ public class CinemaTemplate {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	} 
 	
 	public static void close(Statement stmt) {
 		try {

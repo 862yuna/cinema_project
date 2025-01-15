@@ -41,7 +41,7 @@ public class CinemaMenu {
 		String pw = sc.nextLine();
 		
 //		UserVo user = cc.loginMember(id,pw);
-		UserVo user = new UserVo("user06","pass06");
+		UserVo user = new UserVo();
 		if(user != null) {
 			// 관리자 아이디로 로그인시 관리자메뉴로 이동
 			if(id.equals("admin")) {

@@ -30,19 +30,31 @@ public class CinemaDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
+			String sql = "";
 			switch(option){
 				case 1 : 
-					String sql = "UPDATE c_user SET user_pw = ? "
+					sql = "UPDATE c_user SET user_pw = ? "
 							+ "WHERE user_pw = ?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1,(String)obj);
 					pstmt.setString(2,pw);
-					result=pstmt.executeUpdate();
-				case 2 : 	
+					result = pstmt.executeUpdate();
+				case 2 : 
+					sql = "UPDATE c_user SET user_email = ? "
+							+ "WHERE user_pw = ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, (String)obj);
+					pstmt.setString(2, pw);
+					result = pstmt.executeUpdate();
+				case 3 :
+					sql = "UPDATE c_user SET user_phone = ? "
+							+ "WHERE user_pw = ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, (String)obj);
+					pstmt.setString(2, pw);
+					result = pstmt.executeUpdate();
 			}
-//			pstmt=conn.prepareStatement(sql);
-//			pstmt.setString(1,pw);
-//			result = pstmt.executeUpdate();
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

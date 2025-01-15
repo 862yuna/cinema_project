@@ -16,9 +16,9 @@ public class CinemaService {
 	}
 	
 	// 회원 정보 수정
-	public int editUser(String pw) {
+	public int editUserInfo(int option,Object obj,String pw) {
 		Connection conn = getConnection();
-		int result = cd.editUser(conn,pw);
+		int result = cd.editUserInfo(conn,option,obj,pw);
 		close(conn);
 		return result;
 	}

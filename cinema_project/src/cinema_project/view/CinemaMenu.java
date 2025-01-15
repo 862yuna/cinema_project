@@ -41,7 +41,7 @@ public class CinemaMenu {
 		String pw = sc.nextLine();
 		
 //		UserVo user = cc.loginMember(id,pw);
-		UserVo user = new UserVo();
+		UserVo user = new UserVo("user06","pass06");
 		if(user != null) {
 			// 관리자 아이디로 로그인시 관리자메뉴로 이동
 			if(id.equals("admin")) {
@@ -112,7 +112,23 @@ public class CinemaMenu {
 		System.out.print("비밀번호를 다시 입력하세요 : ");
 		String pw = sc.nextLine();
 		if(user.getUser_pw().equals(pw)) {
-			int result = cc.editUser(pw);
+			System.out.println("수정할 정보를 선택하세요.");
+			System.out.println("1. 비밀번호 / 2. 이메일 / 3. 전화번호");
+			System.out.print("선택 : ");
+			int option = sc.nextInt();
+			Object obj = new Object();
+			switch(option){
+				case 1 : 
+					System.out.print("비밀번호 : ");
+					obj = sc.nextLine();
+				case 2 : 
+					System.out.print("이메일 : ");
+					obj = sc.nextLine();
+				case 3 :
+					System.out.print("전화번호 : ");
+					obj = sc.nextLine();
+			}
+			int result = cc.editUserInfo(option,obj,pw);
 			if(result > 0) {
 				System.out.println(user.getUser_id()+"님의 정보가 수정되었습니다.");
 			}else System.out.println("정보 수정에 실패하였습니다.");

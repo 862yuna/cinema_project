@@ -16,6 +16,7 @@ public class CinemaDao {
 					+ "WHERE user_pw = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pw);
+			result=pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -25,14 +26,23 @@ public class CinemaDao {
 	}
 	
 	// 회원 정보 수정
-	public int editUser(Connection conn,String pw) {
+	public int editUserInfo(Connection conn,int option,Object obj,String pw) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			String sql = "";
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1,pw);
-			result = pstmt.executeUpdate();
+			switch(option){
+				case 1 : 
+					String sql = "UPDATE c_user SET user_pw = ? "
+							+ "WHERE user_pw = ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1,(String)obj);
+					pstmt.setString(2,pw);
+					result=pstmt.executeUpdate();
+				case 2 : 	
+			}
+//			pstmt=conn.prepareStatement(sql);
+//			pstmt.setString(1,pw);
+//			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -13,8 +13,8 @@ public class CinemaController {
 		return cs.deleteUser(pw);
 	}
 	// 회원 정보 수정
-	public int editUser(String pw) {
-		return cs.editUser(pw);
+	public int editUserInfo(int option,Object obj,String pw) {
+		return cs.editUserInfo(option,obj,pw);
 	}
 
 }

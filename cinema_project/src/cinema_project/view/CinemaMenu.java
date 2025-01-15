@@ -43,7 +43,7 @@ public class CinemaMenu {
 		if(result>0) {
 			// 관리자 아이디로 로그인시 관리자메뉴로 이동
 			if(id.equals("admin")) {
-				System.out.println("*** 관리자 메뉴 ***");
+				adminMenu();
 			}else {
 				System.out.println("*** 사용자 메뉴 ***");
 				System.out.println("1. 티켓 예매하기");
@@ -114,5 +114,78 @@ public class CinemaMenu {
 				System.out.println(id+"님 회원 탈퇴되었습니다.");
 			}else System.out.println("회원 탈퇴에 실패하였습니다.");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
+	}
+	// 관리자 메뉴
+	public void adminMenu() {
+		while(true) {
+			System.out.println("*** 관리자 메뉴 ***");
+			System.out.println("1. 회원관리");
+			System.out.println("2. 영화관리");
+			System.out.println("3. 상영정보관리");
+			System.out.println("4. 로그아웃");
+			System.out.print("메뉴  : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch(menu) {
+			case 1:
+				manageUser();
+				break;
+			case 2:
+				manageMovie();
+				break;
+			case 3:
+				manageScreen();
+				break;
+			case 4:
+				System.out.println("로그아웃");
+				return;
+			default:
+				System.out.println("올바른 메뉴를 선택해주세요.");
+				continue;
+			}
+		}
+	}
+	
+	// 회원 관리
+	public void manageUser() {
+		
+	}
+	
+	// 영화 관리 
+	public void manageMovie() {
+		while(true) {			
+			System.out.println("*** 영화 관리 ***");
+			System.out.println("1. 영화 정보 추가");
+			System.out.println("2. 영화 정보 삭제");
+			System.out.println("3. 관리자 메뉴로 돌아가기");
+			System.out.print("메뉴 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch(menu) {
+			case 1:
+				insertMovie();
+				break;
+			case 2:
+				break;
+			case 3:
+				return;
+			default:
+				System.out.println("올바른 메뉴를 선택해주세요.");
+				continue;
+			}
+		}
+	}
+	
+	// 상영정보 관리 - 추가
+	public void manageScreen() {
+		
+	}
+	
+	// 영화 정보 추가
+	public void insertMovie() {
+		System.out.println();
+		System.out.println("영화 추가할래요");
 	}
 }

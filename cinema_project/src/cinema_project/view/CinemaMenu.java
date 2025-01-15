@@ -43,7 +43,7 @@ public class CinemaMenu {
 		if(result>0) {
 			// 관리자 아이디로 로그인시 관리자메뉴로 이동
 			if(id.equals("admin")) {
-				System.out.println("*** 관리자 메뉴 ***");
+				adminMenu();
 			}else {
 				System.out.println("*** 사용자 메뉴 ***");
 				System.out.println("1. 티켓 예매하기");
@@ -114,5 +114,11 @@ public class CinemaMenu {
 				System.out.println(id+"님 회원 탈퇴되었습니다.");
 			}else System.out.println("회원 탈퇴에 실패하였습니다.");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
+	}
+	// 관리자 메뉴
+	public void adminMenu() {
+		System.out.println("*** 관리자 메뉴 ***");
+		System.out.println();
+		
 	}
 }

@@ -1,5 +1,10 @@
 package cinema_project.model.dao;
 
-public class CinemaDao {
+import java.sql.Connection;
 
+public class CinemaDao {
+	public int deleteUser(Connection conn,String pw) {
+		int result=0;
+		return result;
+	}
 }

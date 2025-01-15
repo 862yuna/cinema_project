@@ -44,8 +44,8 @@ public class CinemaTemplate {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
-	}
+		} 
+	} 
 	
 	public static void close(PreparedStatement pstmt) {
 		try {
@@ -65,6 +65,6 @@ public class CinemaTemplate {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	} 
 
 }

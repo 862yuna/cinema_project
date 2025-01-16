@@ -41,9 +41,9 @@ public class CinemaService {
 	}
 	
 	// 회원 탈퇴
-	public int deleteUser(String pw) {
+	public int deleteUser(UserVo user) {
 		Connection conn = getConnection();
-		int result = cd.deleteUser(conn,pw);
+		int result = cd.deleteUser(conn,user);
 		close(conn);
 		return result;
 	}

@@ -31,8 +31,8 @@ public class CinemaController {
 	}
 	
 	// 회원 탈퇴
-	public int deleteUser(String pw) {
-		return cs.deleteUser(pw);
+	public int deleteUser(UserVo user) {
+		return cs.deleteUser(user);
 	}
 	// 회원 정보 수정(비밀번호)
 	public int editUserPw(UserVo user,String pw) {

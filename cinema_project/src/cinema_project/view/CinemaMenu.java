@@ -190,7 +190,7 @@ public class CinemaMenu {
 		System.out.print("비밀번호를 다시 입력하세요 : ");
 		String pw = sc.nextLine();
 		if(user.getUser_pw().equals(pw)) {
-			int result = cc.deleteUser(pw);
+			int result = cc.deleteUser(user);
 			printResult(result,"탈퇴");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
 	}

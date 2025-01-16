@@ -96,14 +96,14 @@ public class CinemaDao {
 
 	
 	// 회원 탈퇴 
-	public int deleteUser(Connection conn,String pw) {
+	public int deleteUser(Connection conn,UserVo user) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			String sql = "DELETE FROM c_user "
-					+ "WHERE user_pw = ? ";
+					+ "WHERE user_no = ? ";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, pw);
+			pstmt.setInt(1, user.getUser_no());
 			result=pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();

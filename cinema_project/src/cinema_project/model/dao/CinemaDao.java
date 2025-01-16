@@ -79,7 +79,7 @@ public class CinemaDao {
 			}else {
 				return null;
 			}
-			
+			 
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {

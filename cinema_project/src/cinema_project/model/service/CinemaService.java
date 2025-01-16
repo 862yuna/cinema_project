@@ -17,7 +17,7 @@ public class CinemaService {
 		return result;
 		
 	}
-	
+	 
 	//아이디 중복 확인
 	public UserVo checkUserId(String userId) {
 		Connection conn = getConnection();

@@ -12,7 +12,7 @@ public class CinemaController {
 		int result = cs.insertUser(uv);
 		return result;
 	}
-	
+	 
 	//아이디 중복 확인
 	public UserVo checkUserId(String userId) {
 		UserVo result = cs.checkUserId(userId);

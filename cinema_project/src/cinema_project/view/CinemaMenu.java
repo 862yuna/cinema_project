@@ -1,5 +1,5 @@
 package cinema_project.view;
-
+ 
 import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;

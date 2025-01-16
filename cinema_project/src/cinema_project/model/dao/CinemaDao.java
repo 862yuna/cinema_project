@@ -73,4 +73,28 @@ public class CinemaDao {
 		}
 		return movie;
 	}
+	
+	// 영화 정보 추가 : 영화명, 러닝타임, 연령제한, 가격, 누적관객수를 입력받아서 영화테이블에 인서트
+	public int insertMovieInfo(Connection conn, String movieTitle, int movieRuntime, String ageLimit, int moviePrice, int watched) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO c_movie (movie_title ,movie_runtime ,age_limit ,movie_price ,watched) VALUES (? ,? ,? ,? ,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, movieTitle);
+			pstmt.setInt(2, movieRuntime);
+			pstmt.setString(3, ageLimit);
+			pstmt.setInt(4, moviePrice);
+			pstmt.setInt(5, watched);
+			
+			result = pstmt.executeUpdate();	
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

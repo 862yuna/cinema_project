@@ -225,8 +225,15 @@ public class CinemaMenu {
 		
 		if(movie != null) {
 			System.out.println("이미 해당 영화명을 가진 영화가 존재합니다.");
+			System.out.println("영화명이 동일할 경우 부제, 연도 등을 적어서 다르게 표현해주세요");
 		} else {
-			System.out.println("영화 추가가 가능합니다.");
+			int result = cc.insertMovieInfo(movieTitle, movieRuntime, ageLimit, moviePrice, watched);
+			
+			if(result > 0) {
+				System.out.println("영화 정보 추가가 완료되었습니다.");
+			} else {
+				System.out.println("영화 정보 추가 도중 문제가 발생하였습니다.");
+			}
 		}
 	}
 }

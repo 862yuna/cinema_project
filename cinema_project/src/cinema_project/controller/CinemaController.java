@@ -34,9 +34,17 @@ public class CinemaController {
 	public int deleteUser(String pw) {
 		return cs.deleteUser(pw);
 	}
-	// 회원 정보 수정
-	public int editUserInfo(int option,Object obj,String pw) {
-		return cs.editUserInfo(option,obj,pw);
+	// 회원 정보 수정(비밀번호)
+	public int editUserPw(UserVo user,String pw) {
+		return cs.editUserPw(user,pw);
+	}
+	// 회원 정보 수정(이메일)
+	public int editUserEmail(UserVo user,String newMail) {
+		return cs.editUserEmail(user,newMail);
+	}
+	// 회원 정보 수정(전화번호)
+	public int editUserPhone(UserVo user,String newPhone) {
+		return cs.editUserPhone(user,newPhone);
 	}
 
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지

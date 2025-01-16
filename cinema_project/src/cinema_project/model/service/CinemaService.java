@@ -48,10 +48,25 @@ public class CinemaService {
 		return result;
 	}
 	
-	// 회원 정보 수정
-	public int editUserInfo(int option,Object obj,String pw) {
+	// 회원 정보 수정(비밀번호)
+	public int editUserPw(UserVo user,String pw) {
 		Connection conn = getConnection();
-		int result = cd.editUserInfo(conn,option,obj,pw);
+		int result = cd.editUserPw(conn,user,pw);
+		close(conn);
+		return result;
+	}
+	
+	//회원 정보 수정(이메일)
+	public int editUserEmail(UserVo user,String newMail) {
+		Connection conn = getConnection();
+		int result = cd.editUserEmail(conn,user,newMail);
+		close(conn);
+		return result;
+	}
+	// 회원 정보 수정(전화번호)
+	public int editUserPhone(UserVo user,String newPhone) {
+		Connection conn = getConnection();
+		int result = cd.editUserPhone(conn,user,newPhone);
 		close(conn);
 		return result;
 	}

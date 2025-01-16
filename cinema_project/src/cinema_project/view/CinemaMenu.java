@@ -126,7 +126,7 @@ public class CinemaMenu {
 		System.out.println("메뉴를 선택해주세요");
 		System.out.println("1. 회원 정보 수정");
 		System.out.println("2. 회원 탈퇴하기");
-		System.out.println("0. 나가기");
+		System.out.println("0. 뒤로가기");
 		System.out.print("메뉴 : ");
 		int menu = sc.nextInt();
 		sc.nextLine();
@@ -134,7 +134,7 @@ public class CinemaMenu {
 		switch(menu) {
 			case 1 : editUser(user); break;
 			case 2 : deleteUser(user); break;
-			case 0 : System.out.println("마이페이지를 종료합니다."); return;
+			case 0 : userMenu(user); break;
 			default : System.out.println("메뉴를 잘못 입력하셨습니다.");
 		}
 	}
@@ -149,25 +149,41 @@ public class CinemaMenu {
 			System.out.println("1. 비밀번호 / 2. 이메일 / 3. 전화번호");
 			System.out.print("선택 : ");
 			int option = sc.nextInt();
-			Object obj = new Object();
-			switch(option){
-				case 1 : 
-					System.out.print("비밀번호 : ");
-					obj = sc.nextLine();
-				case 2 : 
-					System.out.print("이메일 : ");
-					obj = sc.nextLine();
-				case 3 :
-					System.out.print("전화번호 : ");
-					obj = sc.nextLine();
+			sc.nextLine();
+			switch(option) {
+				case 1 : editUserPw(user); break;
+				case 2 : editUserEmail(user); break;
+				case 3 : editUserPhone(user); break;
+				default : System.out.println("올바른 번호가 아닙니다.");
 			}
-			int result = cc.editUserInfo(option,obj,pw);
-			if(result > 0) {
-				System.out.println(user.getUser_id()+"님의 정보가 수정되었습니다.");
-			}else System.out.println("정보 수정에 실패하였습니다.");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
-		
+		myPage(user);
 	}
+	
+	// 마이페이지 - 비밀번호 수정
+	public void editUserPw(UserVo user) {
+		System.out.print("변경하실 비밀번호를 입력해주세요 : ");
+		String newPw = sc.nextLine();
+		int result = cc.editUserPw(user,newPw);
+		printResult(result, "비밀번호 수정");
+	}
+	
+	// 마이페이지 - 이메일 수정
+	public void editUserEmail(UserVo user) {
+		System.out.print("변경하실 이메일을 입력해주세요 : ");
+		String newMail = sc.nextLine();
+		int result = cc.editUserEmail(user,newMail);
+		printResult(result, "이메일 수정");
+	}
+	
+	// 마이페이지 - 전화번호 수정
+	public void editUserPhone(UserVo user) {
+		System.out.print("변경하실 전화번호를 입력해주세요(- 포함) : ");
+		String newPhone = sc.nextLine();
+		int result = cc.editUserPhone(user,newPhone);
+		printResult(result, "전화번호 수정");
+	}
+	
 	// 사용자 메뉴(마이페이지 - 회원 탈퇴)
 	public void deleteUser(UserVo user) {
 		System.out.println("*** 회원 탈퇴 ***");
@@ -175,9 +191,7 @@ public class CinemaMenu {
 		String pw = sc.nextLine();
 		if(user.getUser_pw().equals(pw)) {
 			int result = cc.deleteUser(pw);
-			if(result > 0) {
-				System.out.println(user.getUser_id()+"님 회원 탈퇴되었습니다.");
-			}else System.out.println("회원 탈퇴에 실패하였습니다.");
+			printResult(result,"탈퇴");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
 	}
 	

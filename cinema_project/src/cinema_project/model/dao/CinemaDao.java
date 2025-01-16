@@ -77,6 +77,7 @@ public class CinemaDao {
 			pstmt.setString(2, userPw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				uv.setUser_no(rs.getInt("user_no"));
 				uv.setUser_id(rs.getString("user_id"));
 				uv.setUser_pw(rs.getString("user_pw"));
 				uv.setUser_name(rs.getString("user_name"));
@@ -112,35 +113,21 @@ public class CinemaDao {
 		return result;
 	}
 	
-	// 회원 정보 수정
-	public int editUserInfo(Connection conn,int option,Object obj,String pw) {
+	// 회원 정보 수정(비밀번호)
+	public int editUserPw(Connection conn,UserVo user,String pw) {
+//		System.out.println(pw);
+//		System.out.println(user.getUser_no());
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			String sql = "";
-			switch(option){
-				case 1 : 
-					sql = "UPDATE c_user SET user_pw = ? "
-							+ "WHERE user_pw = ?";
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1,(String)obj);
-					pstmt.setString(2,pw);
-					result = pstmt.executeUpdate();
-				case 2 : 
-					sql = "UPDATE c_user SET user_email = ? "
-							+ "WHERE user_pw = ?";
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, (String)obj);
-					pstmt.setString(2, pw);
-					result = pstmt.executeUpdate();
-				case 3 :
-					sql = "UPDATE c_user SET user_phone = ? "
-							+ "WHERE user_pw = ?";
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, (String)obj);
-					pstmt.setString(2, pw);
-					result = pstmt.executeUpdate();
-			}
+			String sql = "UPDATE c_user "
+					+ "SET user_pw = ? "
+					+ "WHERE user_no = ?";
+			pstmt=conn.prepareStatement(sql);		
+			pstmt.setString(1, pw);
+			pstmt.setInt(2, user.getUser_no());
+			result = pstmt.executeUpdate();
+			System.out.println(result);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -149,6 +136,51 @@ public class CinemaDao {
 		}
 		return result;
 	}
+	
+	// 회원 정보 수정(이메일)
+	public int editUserEmail(Connection conn,UserVo user,String newMail) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			String sql = "UPDATE c_user "
+					+ "SET user_email = ? "
+					+ "WHERE user_no = ?";
+			pstmt=conn.prepareStatement(sql);		
+			pstmt.setString(1, newMail);
+			pstmt.setInt(2, user.getUser_no());
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 회원 정보 수정(전화번호)
+	public int editUserPhone(Connection conn,UserVo user, String newPhone) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			String sql = "UPDATE c_user "
+					+ "SET user_phone = ? "
+					+ "WHERE user_no = ?";
+			pstmt=conn.prepareStatement(sql);		
+			pstmt.setString(1, newPhone);
+			pstmt.setInt(2, user.getUser_no());
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(Connection conn, String movieTitle) {

@@ -10,6 +10,7 @@ public class UserVo {
 	private String user_phone;
 	private int user_views;
 	private int level_no;
+	private String level_name;
 
 	public UserVo() {
 		super();
@@ -130,11 +131,20 @@ public class UserVo {
 		this.level_no = level_no;
 	}
 
+	
+	public String getLevel_name() {
+		return level_name;
+	}
+
+	public void setLevel_name(String level_name) {
+		this.level_name = level_name;
+	}
+
 	@Override
 	public String toString() {
-		return "사용자번호:" + user_no + ", 아이디:" + user_id + ", 비밀번호:" + user_pw + ", 사용자이름:" + user_name + ", 생년월일:"
-				+ user_birth + ", 이메일:" + user_email + ", 전화번호:" + user_phone + ", 관람횟수:" + user_views + ", 등급번호:"
-				+ level_no;
+		return "사용자번호:" + user_no + "\n아이디:" + user_id + "\n비밀번호:" + user_pw + "\n사용자이름:" + user_name + "\n생년월일:"
+				+ user_birth + "\n이메일:" + user_email + "\n전화번호:" + user_phone + "\n관람횟수:" + user_views + "\n등급:"
+				+ level_name;
 	}
 
 }

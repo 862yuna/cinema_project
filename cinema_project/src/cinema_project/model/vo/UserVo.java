@@ -10,7 +10,7 @@ public class UserVo {
 	private String user_phone;
 	private int user_views;
 	private int level_no;
-
+ 
 	public UserVo() {
 		super();
 	}

@@ -7,6 +7,8 @@ public class Run {
 		CinemaMenu cm = new CinemaMenu();
 //		cm.mainMenu();
 //		cm.reserveTicket();
-		
+		cm.mainMenu();
+
+		 
 	}
 }

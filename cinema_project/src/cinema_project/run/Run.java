@@ -8,9 +8,5 @@ public class Run {
 //		cm.mainMenu();
 //		cm.reserveTicket();
 		cm.mainMenu();
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'yoona_cho' of https://github.com/862yuna/cinema_project.git
 	}
 }

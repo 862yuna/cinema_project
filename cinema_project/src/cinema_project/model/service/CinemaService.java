@@ -7,9 +7,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import cinema_project.model.dao.CinemaDao;
+import cinema_project.model.vo.UserVo;
 import cinema_project.model.vo.MovieVo;
 import cinema_project.model.vo.UserVo;
-
 
 public class CinemaService {
 	private CinemaDao cd = new CinemaDao();
@@ -55,6 +55,31 @@ public class CinemaService {
 		close(conn);
 		return result;
 	}
+
+	// 관리자 계정 회원 조회
+	public UserVo searchUserById(String id) {
+		Connection conn = getConnection();
+		UserVo user = cd.searchUserById(conn,id);
+		close(conn);
+		return user;
+	}
+
+	// 관리자 권한 회원 등급 수정
+	public int adminEditUser(String id, int grade) {
+		Connection conn = getConnection();
+		int result = cd.adminEditUser(conn, id, grade);
+		close(conn);
+		return result;
+	}
+
+	// 관리자 권한 회원 삭제
+	public int adminDeleteUser(String id) {
+		Connection conn = getConnection();
+		int result = cd.adminEditUser(conn, id);
+		close(conn);
+		return result;
+	}
+
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(String movieTitle) {
 		Connection conn = getConnection();

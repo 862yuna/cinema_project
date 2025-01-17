@@ -3,9 +3,9 @@ package cinema_project.controller;
 import java.util.List;
 
 import cinema_project.model.service.CinemaService;
+import cinema_project.model.vo.UserVo;
 import cinema_project.model.vo.MovieVo;
 import cinema_project.model.vo.UserVo;
-
 
 public class CinemaController {
 	private CinemaService cs = new CinemaService();
@@ -37,6 +37,15 @@ public class CinemaController {
 	// 회원 정보 수정
 	public int editUser(String pw) {
 		return cs.editUser(pw);
+	}
+	public UserVo searchUserById(String id) {
+		return cs.searchUserById(id);
+	}
+	public int adminEditUser(String id, int grade) {
+		return cs.adminEditUser(id, grade);
+	}
+	public int adminDeleteUser(String id) {
+		return cs.adminDeleteUser(id);
 	}
 
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지

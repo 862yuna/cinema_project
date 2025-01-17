@@ -82,7 +82,7 @@ public class CinemaMenu {
 			if(user != null) {
 				System.out.println(user.getUser_name()+"님 환영합니다!");
 				// 관리자 아이디로 로그인시 관리자메뉴로 이동
-				if(user.getUser_id().equals("admin")) {
+				if("admin".equals(user.getUser_id())) {
 					//관리자 메뉴 호출 부탁해염 
 					adminMenu();
 				}else {

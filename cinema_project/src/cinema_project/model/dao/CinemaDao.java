@@ -354,16 +354,17 @@ public class CinemaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		UserVo user = new UserVo();
+		UserVo user = null;
 
 		try {
-			String sql=" SELECT * FROM c_user "
+			String sql=" SELECT * FROM c_user"
 					+ " WHERE user_id = ? AND user_pw = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				user = new UserVo();
 				user.setUser_no(rs.getInt("user_no"));
 				user.setUser_id(rs.getString("user_id"));
 				user.setUser_pw(rs.getString("user_pw"));

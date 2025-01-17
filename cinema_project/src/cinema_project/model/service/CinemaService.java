@@ -110,28 +110,18 @@ public class CinemaService {
 	}
 	
 	// 회원 탈퇴
-<<<<<<< HEAD
-	public int deleteUser(UserVo user) {
-=======
 
-	public int deleteUser(String pw) {
->>>>>>> refs/heads/develop
+
+	public int deleteUser(UserVo user) {
 		Connection conn = getConnection();
 		int result = cd.deleteUser(conn,user);
 		close(conn);
 		return result;
 	}
-<<<<<<< HEAD
-	
 	// 회원 정보 수정(비밀번호)
-	public int editUserPw(UserVo user,String pw) {
-=======
-
-	// 회원 정보 수정
-	public int editUser(String pw) {
->>>>>>> refs/heads/develop
+	public int editUserPw(UserVo user,String newPw) {
 		Connection conn = getConnection();
-		int result = cd.editUserPw(conn,user,pw);
+		int result = cd.editUserPw(conn,user, newPw);
 		close(conn);
 		return result;
 	}

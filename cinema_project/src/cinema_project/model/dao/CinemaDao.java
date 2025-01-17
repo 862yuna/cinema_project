@@ -382,7 +382,7 @@ public class CinemaDao {
 	}
 
 	// 회원 탈퇴
-	public int deleteUser(Connection conn,String pw,UserVo user) {
+	public int deleteUser(Connection conn,UserVo user) {
 
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -401,7 +401,7 @@ public class CinemaDao {
 	}
 	
 	// 회원 정보 수정(비밀번호)
-	public int editUserPw(Connection conn,UserVo user,String pw) {
+	public int editUserPw(Connection conn,UserVo user,String newPw) {
 //		System.out.println(pw);
 //		System.out.println(user.getUser_no());
 		PreparedStatement pstmt = null;
@@ -411,7 +411,7 @@ public class CinemaDao {
 					+ "SET user_pw = ? "
 					+ "WHERE user_no = ?";
 			pstmt=conn.prepareStatement(sql);		
-			pstmt.setString(1, pw);
+			pstmt.setString(1, newPw);
 			pstmt.setInt(2, user.getUser_no());
 			result = pstmt.executeUpdate();
 			System.out.println(result);
@@ -424,6 +424,49 @@ public class CinemaDao {
 		return result;
 	}
 
+	// 회원 정보 수정(이메일)
+	public int editUserEmail(Connection conn,UserVo user,String newMail) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			String sql = "UPDATE c_user "
+					+ "SET user_email = ? "
+					+ "WHERE user_no = ?";
+			pstmt=conn.prepareStatement(sql);		
+			pstmt.setString(1, newMail);
+			pstmt.setInt(2, user.getUser_no());
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 회원 정보 수정(전화번호)
+	public int editUserPhone(Connection conn,UserVo user, String newPhone) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			String sql = "UPDATE c_user "
+					+ "SET user_phone = ? "
+					+ "WHERE user_no = ?";
+			pstmt=conn.prepareStatement(sql);		
+			pstmt.setString(1, newPhone);
+			pstmt.setInt(2, user.getUser_no());
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	public UserVo searchUserById(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -488,49 +531,6 @@ public class CinemaDao {
 		return result;
 	}
 	
-	// 회원 정보 수정(이메일)
-	public int editUserEmail(Connection conn,UserVo user,String newMail) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		try {
-			String sql = "UPDATE c_user "
-					+ "SET user_email = ? "
-					+ "WHERE user_no = ?";
-			pstmt=conn.prepareStatement(sql);		
-			pstmt.setString(1, newMail);
-			pstmt.setInt(2, user.getUser_no());
-			result = pstmt.executeUpdate();
-			System.out.println(result);
-
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		return result;
-	}
-	
-	// 회원 정보 수정(전화번호)
-	public int editUserPhone(Connection conn,UserVo user, String newPhone) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		try {
-			String sql = "UPDATE c_user "
-					+ "SET user_phone = ? "
-					+ "WHERE user_no = ?";
-			pstmt=conn.prepareStatement(sql);		
-			pstmt.setString(1, newPhone);
-			pstmt.setInt(2, user.getUser_no());
-			result = pstmt.executeUpdate();
-			System.out.println(result);
-
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		return result;
-	}
 	
 	
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지

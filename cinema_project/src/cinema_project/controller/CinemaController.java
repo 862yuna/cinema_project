@@ -38,6 +38,8 @@ public class CinemaController {
 	public int editUser(String pw) {
 		return cs.editUser(pw);
 	}
+	
+	
 
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(String movieTitle) {

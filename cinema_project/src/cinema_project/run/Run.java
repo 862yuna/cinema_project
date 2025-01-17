@@ -7,7 +7,7 @@ public class Run {
 		
 		CinemaMenu cm = new CinemaMenu();
 		cm.mainMenu();
-
+ 
 		 
 	}
 }

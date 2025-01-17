@@ -126,6 +126,7 @@ public class CinemaMenu {
 		System.out.println("메뉴를 선택해주세요");
 		System.out.println("1. 회원 정보 수정");
 		System.out.println("2. 회원 탈퇴하기");
+		System.out.println("3. 회원 등급 조회하기");
 		System.out.println("0. 나가기");
 		System.out.print("메뉴 : ");
 		int menu = sc.nextInt();
@@ -134,6 +135,7 @@ public class CinemaMenu {
 		switch(menu) {
 			case 1 : editUser(user); break;
 			case 2 : deleteUser(user); break;
+			case 3 : selectLevel(user); break;
 			case 0 : System.out.println("마이페이지를 종료합니다."); return;
 			default : System.out.println("메뉴를 잘못 입력하셨습니다.");
 		}
@@ -163,6 +165,19 @@ public class CinemaMenu {
 				System.out.println(user.getUser_id()+"님 회원 탈퇴되었습니다.");
 			}else System.out.println("회원 탈퇴에 실패하였습니다.");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
+	}
+	
+	// 사용자 메뉴(마이페이지 - 등급 조회)
+	public void selectLevel(UserVo user) {
+		System.out.println("*** 회원 등급 조회 ***");
+		int views = user.getUser_views();
+	    if(views>=50) {
+	    	System.out.println(user.getUser_name()+"의 등급은 [vvip]입니다.");
+	    }else if(views>=20){
+	    	System.out.println(user.getUser_name()+"의 등급은 [vip]입니다.");
+	    }else {
+	    	System.out.println(user.getUser_name()+"의 등급은 [일반]입니다.");
+	    }
 	}
 	
 	// 관리자 메뉴

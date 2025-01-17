@@ -73,8 +73,8 @@ public class MovieVo {
 
 	@Override
 	public String toString() {
-		return "영화번호:" + movie_no + ", 영화제목:" + movie_title + ", 러닝타임:" + movie_runtime + ", 연령제한:" + age_limit
-				+ ", 영화가격:" + movie_price + ", 누적관객수:" + watched;
+		return "[no." + movie_no + ", 제목 : " + movie_title + ", 러닝타임 : " + movie_runtime + ", 연령제한 : " + age_limit
+				+ ", 가격 : " + movie_price + ", 누적관객수 : " + watched +"명]";
 	}
 
 }

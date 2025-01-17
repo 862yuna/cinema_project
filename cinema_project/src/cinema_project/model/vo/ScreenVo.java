@@ -4,22 +4,22 @@ public class ScreenVo {
 	private int screen_no;
 	private String screen_date;
 	private String screen_time;
+	private int pos_seat;
 	private int movie_no;
 	private int theater_no;
-	private int seat_no;
 
 	public ScreenVo() {
 		super();
 	}
 
-	public ScreenVo(int screen_no, String screen_date, String screen_time, int movie_no, int theater_no, int seat_no) {
+	public ScreenVo(int screen_no, String screen_date, String screen_time, int pos_seat, int movie_no, int theater_no) {
 		super();
 		this.screen_no = screen_no;
 		this.screen_date = screen_date;
 		this.screen_time = screen_time;
+		this.pos_seat = pos_seat;
 		this.movie_no = movie_no;
 		this.theater_no = theater_no;
-		this.seat_no = seat_no;
 	}
 
 	public int getScreen_no() {
@@ -46,6 +46,14 @@ public class ScreenVo {
 		this.screen_time = screen_time;
 	}
 
+	public int getPos_seat() {
+		return pos_seat;
+	}
+
+	public void setPos_seat(int pos_seat) {
+		this.pos_seat = pos_seat;
+	}
+	
 	public int getMovie_no() {
 		return movie_no;
 	}
@@ -62,18 +70,9 @@ public class ScreenVo {
 		this.theater_no = theater_no;
 	}
 
-	public int getSeat_no() {
-		return seat_no;
-	}
-
-	public void setSeat_no(int seat_no) {
-		this.seat_no = seat_no;
-	}
-
 	@Override
 	public String toString() {
-		return "상영번호:" + screen_no + ", 상영날짜:" + screen_date + ", 상영시간:" + screen_time + ", 영화번호:" + movie_no
-				+ ", 상영관번호:" + theater_no + ", 좌석번호:" + seat_no;
+		return "상영번호:" + screen_no + ", 상영날짜:" + screen_date + ", 상영시간:" + screen_time + ", 예약가능좌석수:" + pos_seat + ", 영화번호:" + movie_no
+				+ ", 상영관번호:" + theater_no;
 	}
-
 }

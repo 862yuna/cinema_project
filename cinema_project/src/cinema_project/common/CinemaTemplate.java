@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
-
+ 
 public class CinemaTemplate {
 	public static Connection getConnection() {
 		Connection conn = null;

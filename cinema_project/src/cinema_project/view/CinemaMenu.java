@@ -398,7 +398,7 @@ public class CinemaMenu {
 //			System.out.println("수정 중 오류가 발생되었습니다.");
 //		}
 //	}
-	
+	 
 	// 영화 관리 
 	public void manageMovie() {
 		while(true) {

@@ -91,7 +91,7 @@ public class CinemaController {
 	public int editUser(String pw) {
 		return cs.editUser(pw);
 	}
-
+ 
 	// 회원 검색(아이디)
 	public UserVo searchUserById(String id) {
 		return cs.searchUserById(id);

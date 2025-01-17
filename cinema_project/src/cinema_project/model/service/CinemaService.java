@@ -153,7 +153,7 @@ public class CinemaService {
 		close(conn);
 		return movie;
 	}
-	
+	 
 	// 영화번호 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByNo(int movieNo) {
 		Connection conn = getConnection();

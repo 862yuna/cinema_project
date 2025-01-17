@@ -365,6 +365,7 @@ public class CinemaDao {
 			pstmt.setString(2, userPw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				uv = new UserVo();
 				uv.setUser_no(rs.getInt("user_no"));
 				uv.setUser_id(rs.getString("user_id"));
 				uv.setUser_pw(rs.getString("user_pw"));

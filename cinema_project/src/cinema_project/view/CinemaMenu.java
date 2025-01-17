@@ -95,20 +95,24 @@ public class CinemaMenu {
 
 	// 사용자 메뉴
 	public void userMenu(UserVo user) {
-		System.out.println("*** 사용자 메뉴 ***");
-		System.out.println("1. 티켓 예매하기");
-		System.out.println("2. 예매 내역 조회");
-		System.out.println("3. 예매 취소");
-		System.out.println("4. 마이페이지");
-		System.out.print("메뉴 선택 : ");
-		int menu = sc.nextInt();
-		sc.nextLine();
-		switch(menu) {
+		while(true) {
+			System.out.println("*** 사용자 메뉴 ***");
+			System.out.println("1. 티켓 예매하기");
+			System.out.println("2. 예매 내역 조회");
+			System.out.println("3. 예매 취소");
+			System.out.println("4. 마이페이지");
+			System.out.println("0. 로그아웃");
+			System.out.print("메뉴 선택 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+			switch(menu) {
 			case 1 : reserveTicket(user); break;
 			case 2 : selectByMyTicket(); break;
 			case 3 : cancelTicket(); break;
 			case 4 : myPage(user); break;
-			default : System.out.println("처음으로 돌아갑니다.");
+			case 0 : return;
+			default : System.out.println("잘못 입력하셨습니다.");
+			}			
 		}
 	}
 	
@@ -217,20 +221,22 @@ public class CinemaMenu {
 	
 	// 사용자 메뉴(마이페이지)
 	public void myPage(UserVo user) {
-		System.out.println("*** 마이페이지 ***");
-		System.out.println("메뉴를 선택해주세요");
-		System.out.println("1. 회원 정보 수정");
-		System.out.println("2. 회원 탈퇴하기");
-		System.out.println("0. 뒤로가기");
-		System.out.print("메뉴 : ");
-		int menu = sc.nextInt();
-		sc.nextLine();
-		
-		switch(menu) {
+		while(true) {
+			System.out.println("*** 마이페이지 ***");
+			System.out.println("메뉴를 선택해주세요");
+			System.out.println("1. 회원 정보 수정");
+			System.out.println("2. 회원 탈퇴하기");
+			System.out.println("0. 뒤로가기");
+			System.out.print("메뉴 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch(menu) {
 			case 1 : editUser(user); break;
 			case 2 : deleteUser(user); break;
-			case 0 : userMenu(user); break;
+			case 0 : return;
 			default : System.out.println("메뉴를 잘못 입력하셨습니다.");
+			}			
 		}
 	}
 	
@@ -241,19 +247,23 @@ public class CinemaMenu {
 		String pw = sc.nextLine();
 		if(user.getUser_pw().equals(pw)) {
 			System.out.println("수정할 정보를 선택하세요.");
-			System.out.println("1. 비밀번호 / 2. 이메일 / 3. 전화번호");
+			System.out.println("1. 비밀번호");
+			System.out.println("2. 이메일");
+			System.out.println("3. 전화번호");
+			System.out.println("0. 뒤로가기");
 			System.out.print("선택 : ");
 			int option = sc.nextInt();
 			sc.nextLine();
-			switch(option) {
+			while(true) {
+				switch(option) {
 				case 1 : editUserPw(user); break;
 				case 2 : editUserEmail(user); break;
 				case 3 : editUserPhone(user); break;
 				case 0 : return;
 				default : System.out.println("올바른 번호가 아닙니다.");
+				}			
 			}
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
-		myPage(user);
 
 	}
 	

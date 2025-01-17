@@ -12,12 +12,12 @@ public class ScreenVo {
 		super();
 	}
 
-	public ScreenVo(int screen_no, String screen_date, String screen_time, int movie_no, int theater_no, int seat_no) {
+	public ScreenVo(int screen_no, String screen_date, String screen_time, int pos_seat, int movie_no, int theater_no) {
 		super();
 		this.screen_no = screen_no;
 		this.screen_date = screen_date;
 		this.screen_time = screen_time;
-		this.pos_seat = seat_no;
+		this.pos_seat = pos_seat;
 		this.movie_no = movie_no;
 		this.theater_no = theater_no;
 	}
@@ -72,7 +72,7 @@ public class ScreenVo {
 
 	@Override
 	public String toString() {
-		return "상영번호:" + screen_no + ", 상영날짜:" + screen_date + ", 상영시간:" + screen_time + ", 좌석번호:" + pos_seat + ", 영화번호:" + movie_no
+		return "상영번호:" + screen_no + ", 상영날짜:" + screen_date + ", 상영시간:" + screen_time + ", 예약가능좌석수:" + pos_seat + ", 영화번호:" + movie_no
 				+ ", 상영관번호:" + theater_no;
 	}
 }

@@ -3,19 +3,42 @@ package cinema_project.controller;
 import java.util.List;
 
 import cinema_project.model.service.CinemaService;
-
 import cinema_project.model.vo.MovieVo;
+import cinema_project.model.vo.PaymentVo;
+import cinema_project.model.vo.ReservationVo;
 import cinema_project.model.vo.ScreenVo;
-
 import cinema_project.model.vo.UserVo;
 
 public class CinemaController {
 	private CinemaService cs = new CinemaService();
 	
+	// 예약번호로 결제정보 조회하기
+	public PaymentVo findPayment(ReservationVo reserved) {
+		PaymentVo result = cs.findPayment(reserved);
+		return result;
+	}
+	
+	// 결제내역 생성 메소드
+	public int paymentMovie(int money, ReservationVo reserved) {
+		int result = cs.paymentMovie(money, reserved);
+		return result;
+	}
+	
+	// 상영번호, 유저번호로 예약정보 찾기
+	public ReservationVo findReservation(ScreenVo screen, UserVo user) {
+		ReservationVo result = cs.findReservation(screen, user);
+		return result;
+	}
+	
+	// 좌석 예약하는 메소드
+	public int reverseSeat(int number, ScreenVo screen, UserVo user) {
+		int result = cs.reverseSeat(number, screen, user);
+		return result;
+	}
 
 	// 날짜,시간으로 상영정보 검색
-	public ScreenVo findScreenExist(String date, String time) {
-		ScreenVo result = cs.findScreenExist(date, time);
+	public ScreenVo findScreenExist(String date, String time, String title) {
+		ScreenVo result = cs.findScreenExist(date, time, title);
 		return result;
 	}
 	

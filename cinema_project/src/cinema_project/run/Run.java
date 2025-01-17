@@ -8,7 +8,5 @@ public class Run {
 //		cm.mainMenu();
 //		cm.reserveTicket();
 		cm.mainMenu();
-
-		 
 	}
 }

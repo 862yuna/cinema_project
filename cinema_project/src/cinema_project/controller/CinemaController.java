@@ -43,7 +43,7 @@ public class CinemaController {
 		ScreenVo result = cs.findScreenExist(date, time, title);
 		return result;
 	}
-	
+	 
 	// 영화 연령 제한 확인 메소드
 	public int ageLimitCheck(String title, UserVo user) {
 		int result = cs.ageLimitCheck(title, user);

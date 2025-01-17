@@ -519,7 +519,7 @@ public class CinemaMenu {
 			if(movie != null) {
 				System.out.print("정말 삭제하시려면 'Y'를 눌러주세요(돌아가려면 아무키나 눌러주세요) : ");
 				String chkDelete = sc.nextLine();
-				
+				 
 				if("y".equalsIgnoreCase(chkDelete)) {
 					int result = cc.deleteMovie(delMovieNo);
 					

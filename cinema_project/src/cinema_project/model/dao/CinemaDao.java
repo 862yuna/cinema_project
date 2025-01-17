@@ -74,7 +74,7 @@ public class CinemaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ReservationVo reserved = null;
-		
+		 
 		try {
 			String sql = "select * from c_reservation where user_no = ? "
 					+ "and screen_no = ?";

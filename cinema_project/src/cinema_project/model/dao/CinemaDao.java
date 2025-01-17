@@ -74,7 +74,7 @@ public class CinemaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ReservationVo reserved = null;
-		
+		 
 		try {
 			String sql = "select * from c_reservation where user_no = ? "
 					+ "and screen_no = ?";
@@ -301,20 +301,22 @@ public class CinemaDao {
 		return list;
 	}
 
+
 	// 회원가입
-	public int insertUser(UserVo uv, Connection conn) {
+	public int insertUser(UserVo user, Connection conn) {
+
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			String sql = "INSERT INTO c_user(user_id ,user_pw ,user_name ,user_birth ,user_email ,user_phone) "
 					+ "VALUES(?,?,?,?,?,?);";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,uv.getUser_id());
-			pstmt.setString(2,uv.getUser_pw());
-			pstmt.setString(3,uv.getUser_name());
-			pstmt.setString(4,uv.getUser_birth());
-			pstmt.setString(5,uv.getUser_email());
-			pstmt.setString(6,uv.getUser_phone());
+			pstmt.setString(1,user.getUser_id());
+			pstmt.setString(2,user.getUser_pw());
+			pstmt.setString(3,user.getUser_name());
+			pstmt.setString(4,user.getUser_birth());
+			pstmt.setString(5,user.getUser_email());
+			pstmt.setString(6,user.getUser_phone());
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -328,7 +330,7 @@ public class CinemaDao {
 	public UserVo checkUserId(String userId , Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		UserVo uv = new UserVo();
+		UserVo user = new UserVo();
 		try {
 			String sql=" SELECT * FROM c_user "
 					+ " WHERE user_id = ?";
@@ -336,25 +338,29 @@ public class CinemaDao {
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				uv.setUser_id(userId);
+				user.setUser_id(userId);
 			}else {
 				return null;
 			}
-			
+			 
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			 close(rs);
 		     close(pstmt);	
 		}
-		return uv;
+
+		return user;
 	}
 	
 	// 로그인
 	public UserVo login(String userId, String userPw , Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		UserVo uv = null;
+
+		UserVo user = new UserVo();
+
+
 		try {
 			String sql=" SELECT * FROM c_user "
 					+ " WHERE user_id = ? AND user_pw = ?";
@@ -363,13 +369,14 @@ public class CinemaDao {
 			pstmt.setString(2, userPw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				uv = new UserVo();
-				uv.setUser_no(rs.getInt("user_no"));
-				uv.setUser_id(rs.getString("user_id"));
-				uv.setUser_pw(rs.getString("user_pw"));
-				uv.setUser_name(rs.getString("user_name"));
-				uv.setUser_birth(rs.getString("user_birth"));
-				uv.setUser_views(rs.getInt("user_views"));
+				user.setUser_no(rs.getInt("userno"));
+				user.setUser_id(rs.getString("user_id"));
+				user.setUser_pw(rs.getString("user_pw"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_birth(rs.getString("user_birth"));
+				user.setUser_email(rs.getString("user_email"));
+				user.setUser_phone(rs.getString("user_phone"));
+				user.setUser_views(rs.getInt("user_views"));
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -377,7 +384,7 @@ public class CinemaDao {
 			 close(rs);
 		     close(pstmt);	
 		}
-		return uv;
+		return user;
 	}
 
 	// 회원 탈퇴
@@ -535,9 +542,7 @@ public class CinemaDao {
 		}
 		return result;
 	}
-	
-	
-	
+
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(Connection conn, String movieTitle) {
 		PreparedStatement pstmt = null;

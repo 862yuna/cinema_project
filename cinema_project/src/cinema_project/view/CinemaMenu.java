@@ -5,13 +5,9 @@ import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;
 import cinema_project.model.vo.MovieVo;
-
-import cinema_project.model.vo.ScreenVo;
-
 import cinema_project.model.vo.PaymentVo;
 import cinema_project.model.vo.ReservationVo;
 import cinema_project.model.vo.ScreenVo;
-
 import cinema_project.model.vo.UserVo;
 
 public class CinemaMenu {
@@ -258,7 +254,6 @@ public class CinemaMenu {
 			}else System.out.println("회원 탈퇴에 실패하였습니다.");
 		}else System.out.println("비밀번호를 다시 확인해주세요.");
 	}
-
 	
 	// 사용자 메뉴(마이페이지 - 등급 조회)
 	public void selectLevel(UserVo user) {
@@ -273,8 +268,6 @@ public class CinemaMenu {
 	    }
 	}
 	
-
-
 	// 관리자 메뉴
 	public void adminMenu() {
 		while(true) {
@@ -432,7 +425,7 @@ public class CinemaMenu {
 		}
 	}
 	
-	// 상영정보 관리 - 추가
+	// 상영정보 관리
 	public void manageScreen() {
 		while(true) {
 			System.out.println("*** 상영 관리 ***");

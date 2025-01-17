@@ -1,7 +1,6 @@
 package cinema_project.model.dao;
 
 import static cinema_project.common.CinemaTemplate.close;
-import static cinema_project.common.CinemaTemplate.getConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,10 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cinema_project.model.vo.MovieVo;
-
 import cinema_project.model.vo.PaymentVo;
 import cinema_project.model.vo.ReservationVo;
-
 import cinema_project.model.vo.ScreenVo;
 import cinema_project.model.vo.UserVo;
 
@@ -301,7 +298,6 @@ public class CinemaDao {
 		return list;
 	}
 
-
 	// 회원가입
 	public int insertUser(UserVo user, Connection conn) {
 
@@ -360,7 +356,6 @@ public class CinemaDao {
 
 		UserVo user = new UserVo();
 
-
 		try {
 			String sql=" SELECT * FROM c_user "
 					+ " WHERE user_id = ? AND user_pw = ?";
@@ -369,7 +364,7 @@ public class CinemaDao {
 			pstmt.setString(2, userPw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				user.setUser_no(rs.getInt("userno"));
+				user.setUser_no(rs.getInt("user_no"));
 				user.setUser_id(rs.getString("user_id"));
 				user.setUser_pw(rs.getString("user_pw"));
 				user.setUser_name(rs.getString("user_name"));

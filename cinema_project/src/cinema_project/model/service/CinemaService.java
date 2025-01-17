@@ -47,7 +47,7 @@ public class CinemaService {
 		close(conn);
 		return result;
 	}
-
+	
 	// 날짜,시간으로 상영정보 검색
 	public ScreenVo findScreenExist(String date, String time, String title) {
 		Connection conn = getConnection();

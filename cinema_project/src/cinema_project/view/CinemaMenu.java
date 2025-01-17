@@ -77,16 +77,16 @@ public class CinemaMenu {
 				// 관리자 아이디로 로그인시 관리자메뉴로 이동
 				if(userId.equals("admin")) {
 				System.out.println(user.getUser_name()+"님 환영합니다!");
-				if(user.getUser_id().equals("admin")) {
+					if(user.getUser_id().equals("admin")) {
 					//관리자 메뉴 호출 부탁해염 
 					adminMenu();
-				}else {
+					}else {
 					userMenu(user);
+					}
 				}
 			}else {
 				System.out.println("비밀번호 혹은 아이디가 일치하지 않습니다.");
 			}
-		}
 	}
 
 	// 사용자 메뉴
@@ -157,6 +157,7 @@ public class CinemaMenu {
 				case 1 : editUserPw(user); break;
 				case 2 : editUserEmail(user); break;
 				case 3 : editUserPhone(user); break;
+				case 0 : return;
 				default : System.out.println("올바른 번호가 아닙니다.");
 			}
 		}else System.out.println("비밀번호를 다시 확인해주세요.");

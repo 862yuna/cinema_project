@@ -4,6 +4,7 @@ import java.util.List;
 
 import cinema_project.model.service.CinemaService;
 import cinema_project.model.vo.MovieVo;
+import cinema_project.model.vo.ScreenVo;
 import cinema_project.model.vo.UserVo;
 
 
@@ -58,5 +59,9 @@ public class CinemaController {
 	// 영화 정보 조회 : 영화테이블의 모든 정보를 출력해주는 메소드
 	public List<MovieVo> selectMovieAll() {
 		return cs.selectMovieAll();
+	}
+	// 상영 정보 조회 : 상영정보테이블의 모든 정보를 출력해주는 메소드
+	public List<ScreenVo> selectScreenAll() {
+		return cs.selectScreenAll();	
 	}
 }

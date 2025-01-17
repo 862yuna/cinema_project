@@ -8,6 +8,7 @@ import java.util.List;
 
 import cinema_project.model.dao.CinemaDao;
 import cinema_project.model.vo.MovieVo;
+import cinema_project.model.vo.ScreenVo;
 import cinema_project.model.vo.UserVo;
 
 
@@ -88,6 +89,12 @@ public class CinemaService {
 		Connection conn = getConnection();
 		List<MovieVo> list = cd.selectMovieAll(conn);
 		close(conn);
+		return list;
+	}
+	// 상영 정보 조회 : 상영정보테이블의 모든 정보를 출력해주는 메소드
+	public List<ScreenVo> selectScreenAll() {
+		Connection conn = getConnection();
+		List<ScreenVo> list = cd.selectScreenAll(conn);
 		return list;
 	}
 }

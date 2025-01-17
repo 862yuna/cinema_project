@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cinema_project.model.vo.MovieVo;
+import cinema_project.model.vo.ScreenVo;
 import cinema_project.model.vo.UserVo;
 
 public class CinemaDao {
@@ -254,6 +255,38 @@ public class CinemaDao {
 				mv.setMovie_price(rs.getInt("movie_price"));
 				mv.setWatched(rs.getInt("watched"));
 				list.add(mv);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return list;
+	}
+	
+	// 상영 정보 조회 : 상영정보테이블의 모든 정보를 출력해주는 메소드
+	public List<ScreenVo> selectScreenAll(Connection conn) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		List<ScreenVo> list = null;
+		
+		try {
+			stmt = conn.createStatement();
+			String sql = "SELECT * FROM c_screen";
+			rs = stmt.executeQuery(sql);
+			
+			list = new ArrayList<>();
+			while(rs.next()) {
+				ScreenVo sv = new ScreenVo();
+				sv.setScreen_no(rs.getInt("screen_no"));
+				sv.setScreen_date(rs.getString("screen_date"));
+				sv.setScreen_time(rs.getString("screen_time"));
+				sv.setPos_seat(rs.getInt("pos_seat"));
+				sv.setMovie_no(rs.getInt("movie_no"));
+				sv.setTheater_no(rs.getInt("theater_no"));
+				list.add(sv);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

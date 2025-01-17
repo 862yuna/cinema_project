@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;
 import cinema_project.model.vo.MovieVo;
+import cinema_project.model.vo.ScreenVo;
 import cinema_project.model.vo.UserVo;
 
 public class CinemaMenu {
@@ -231,7 +232,31 @@ public class CinemaMenu {
 	
 	// 상영정보 관리 - 추가
 	public void manageScreen() {
-		
+		while(true) {
+			System.out.println("*** 상영 관리 ***");
+			System.out.println("1. 상영정보 조회");
+			System.out.println("2. 상영정보 추가");
+			System.out.println("3. 상영정보 삭제");
+			System.out.println("4. 관리자 메뉴로 돌아가기");
+			System.out.print("메뉴 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch(menu) {
+			case 1:
+				selectScreenAll();
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("올바른 메뉴를 선택해주세요.");
+				continue;
+			}
+		}
 	}
 	
 	// 영화 정보 추가
@@ -320,6 +345,20 @@ public class CinemaMenu {
 		} else {
 			for(MovieVo mv: list) {
 				System.out.println(mv);
+			}
+		}
+	}
+	
+	// 상영정보테이블의 모든 정보를 출력해주는 메소드
+	public void selectScreenAll() {
+		System.out.println("*** 모든 상영정보 조회 ***");
+		List<ScreenVo> list = cc.selectScreenAll();
+		
+		if(list.isEmpty()) {
+			System.out.println("존재하는 상영정보가 없습니다.");
+		} else {
+			for(ScreenVo sv : list) {
+				System.out.println(sv);
 			}
 		}
 	}

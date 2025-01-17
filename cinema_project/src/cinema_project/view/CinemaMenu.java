@@ -330,6 +330,30 @@ public class CinemaMenu {
 		
 		// 상영정보 관리 - 추가
 		public void manageScreen() {
+			while(true) {
+				System.out.println("*** 상영 관리 ***");
+				System.out.println("1. 상영정보 조회");
+				System.out.println("2. 상영정보 추가");
+				System.out.println("3. 상영정보 삭제");
+				System.out.println("4. 관리자 메뉴로 돌아가기");
+				System.out.print("메뉴 : ");
+				int menu = sc.nextInt();
+				sc.nextLine();
+				
+				switch(menu) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					return;
+				default:
+					System.out.println("올바른 메뉴를 선택해주세요.");
+					continue;
+				}
+			}
 		}
 	
 		// 영화 정보 추가

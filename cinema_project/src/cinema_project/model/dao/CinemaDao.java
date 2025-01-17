@@ -98,7 +98,6 @@ public class CinemaDao {
 		return uv;
 	}
 
-	
 	// 회원 탈퇴 
 	public int deleteUser(Connection conn,String pw) {
 		PreparedStatement pstmt = null;
@@ -132,7 +131,8 @@ public class CinemaDao {
 		}
 		return result;
 	}
-
+	
+	// 관리자 계정 회원 조회
 	public UserVo searchUserById(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -163,7 +163,8 @@ public class CinemaDao {
 		}
 		return user;
 	}
-
+	
+	// 관리자 권한 회원 등급 수정
 	public int adminEditUser(Connection conn, String id, int grade) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -180,7 +181,8 @@ public class CinemaDao {
 		}
 		return result;
 	}
-
+	
+	// 관리자 권한 회원 삭제
 	public int adminEditUser(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		int result = 0;

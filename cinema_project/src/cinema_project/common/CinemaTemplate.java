@@ -15,7 +15,6 @@ public class CinemaTemplate {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream("resources/cinema.properties"));
 			
-			
 			Class.forName(prop.getProperty("driver"));
 			String url = prop.getProperty("url");
 			String user = prop.getProperty("user");
@@ -65,6 +64,5 @@ public class CinemaTemplate {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	} 
-
+	}
 }

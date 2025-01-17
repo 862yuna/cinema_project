@@ -21,7 +21,6 @@ public class CinemaService {
 		int result = cd.insertUser(uv,conn);
 		close(conn);
 		return result;
-		
 	}
 	 
 	//아이디 중복 확인
@@ -30,7 +29,6 @@ public class CinemaService {
 		UserVo uv = cd.checkUserId(userId, conn);
 		close(conn);
 		return uv;
-		
 	}
 	
 	//로그인
@@ -88,6 +86,7 @@ public class CinemaService {
 		close(conn);
 		return movie;
 	}
+	
 	// 영화번호 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByNo(int movieNo) {
 		Connection conn = getConnection();
@@ -95,6 +94,7 @@ public class CinemaService {
 		close(conn);
 		return movie;
 	}
+	
 	// 영화 정보 추가 : 영화명, 러닝타임, 연령제한, 가격, 누적관객수를 입력받아서 영화테이블에 인서트
 	public int insertMovieInfo(String movieTitle, int movieRuntime, String ageLimit, int moviePrice, int watched) {
 		Connection conn = getConnection();
@@ -102,6 +102,7 @@ public class CinemaService {
 		close(conn);
 		return result;
 	}
+	
 	// 영화 정보 삭제 : 영화번호를 입력받아서 영화테이블에서 딜리트
 	public int deleteMovie(int delMovieNo) {
 		Connection conn = getConnection();
@@ -109,6 +110,7 @@ public class CinemaService {
 		close(conn);
 		return result;
 	}
+	
 	// 영화 정보 조회 : 영화테이블의 모든 정보를 출력해주는 메소드
 	public List<MovieVo> selectMovieAll() {
 		Connection conn = getConnection();
@@ -116,6 +118,7 @@ public class CinemaService {
 		close(conn);
 		return list;
 	}
+	
 	// 상영 정보 조회 : 상영정보테이블의 모든 정보를 출력해주는 메소드
 	public List<ScreenVo> selectScreenAll() {
 		Connection conn = getConnection();

@@ -34,7 +34,7 @@ public class CinemaMenu {
 		}
 	}
 	
-	// 회원가입 
+	// 회원가입
 	public void insertUser() {
 		System.out.println("*** 회원 가입 ***");
 		while(true) {
@@ -68,7 +68,7 @@ public class CinemaMenu {
 			}
 		}	
 	}
-
+	
 	// 로그인
 	public void login() {
 			System.out.println("*** 로그인 ***");
@@ -92,7 +92,7 @@ public class CinemaMenu {
 			}
 		}
 	}
-
+	
 	// 사용자 메뉴
 	public void userMenu(UserVo user) {
 		System.out.println("*** 사용자 메뉴 ***");
@@ -110,7 +110,7 @@ public class CinemaMenu {
 			case 4 : myPage(user); break;
 			default : System.out.println("처음으로 돌아갑니다.");
 		}
-	}	
+	}
 	
 	// 사용자 메뉴(티켓 예매)
 	public void reserveTicket() {
@@ -238,18 +238,13 @@ public class CinemaMenu {
 			System.out.println(user);
 			System.out.println();
 //			System.out.println("1. 회원 등급 수정");
-			System.out.println("1. 회원 삭제");
-			System.out.print("메뉴 : ");
+			System.out.println("해당 회원의 삭제를 진행하시려면 1을 눌러주세요. (취소하시려면 아무키나 눌러주세요)");
+			System.out.print("입력 : ");
 			int menu = sc.nextInt();
 			sc.nextLine();
-			
-			switch (menu) {
-			case 1:
-//				adminEditUser(id);
+				
+			if(menu == 1) {
 				adminDeleteUser(id);
-				break;
-			default:
-				break;
 			}
 		}
 	}
@@ -257,6 +252,7 @@ public class CinemaMenu {
 	// 회원 삭제
 	public void adminDeleteUser(String id) {
 		System.out.println("1을 한번 더 누르면 삭제됩니다. (취소하시려면 아무키나 눌러주세요)");
+		System.out.print("입력 : ");
 		int menu = sc.nextInt();
 		sc.nextLine();
 		
@@ -330,7 +326,7 @@ public class CinemaMenu {
 			}
 		}
 	}
-		
+	
 	// 상영정보 관리 - 추가
 	public void manageScreen() {
 		while(true) {
@@ -473,4 +469,3 @@ public class CinemaMenu {
 		}
 	}
 }
-

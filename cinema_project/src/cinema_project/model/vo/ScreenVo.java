@@ -8,7 +8,6 @@ public class ScreenVo {
 	private int movie_no;
 	private int theater_no;
 
-
 	public ScreenVo() {
 		super();
 	}
@@ -76,5 +75,4 @@ public class ScreenVo {
 		return "상영번호:" + screen_no + ", 상영날짜:" + screen_date + ", 상영시간:" + screen_time + ", 좌석번호:" + pos_seat + ", 영화번호:" + movie_no
 				+ ", 상영관번호:" + theater_no;
 	}
-
 }

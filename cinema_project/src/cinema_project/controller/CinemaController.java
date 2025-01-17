@@ -17,20 +17,16 @@ public class CinemaController {
 		int result = cs.insertUser(uv);
 		return result;
 	}
-	 
 	//아이디 중복 확인
 	public UserVo checkUserId(String userId) {
 		UserVo result = cs.checkUserId(userId);
 		return result;
 	}
-	
-	
 	// 로그인
 	public UserVo login(String UserId,String userPw) {
 		UserVo result = cs.login(UserId, userPw);
 		return result;
 	}
-	
 	// 회원 탈퇴
 	public int deleteUser(String pw) {
 		return cs.deleteUser(pw);
@@ -39,16 +35,18 @@ public class CinemaController {
 	public int editUser(String pw) {
 		return cs.editUser(pw);
 	}
+	// 회원 검색(아이디)
 	public UserVo searchUserById(String id) {
 		return cs.searchUserById(id);
 	}
+	// 관리자 : 회원정보 수정
 	public int adminEditUser(String id, int grade) {
 		return cs.adminEditUser(id, grade);
 	}
+	// 관리자 : 회원 삭제
 	public int adminDeleteUser(String id) {
 		return cs.adminDeleteUser(id);
 	}
-
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(String movieTitle) {
 		return cs.chkMovieByTitle(movieTitle);

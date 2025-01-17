@@ -120,6 +120,7 @@ public class CinemaService {
 		return result;
 	}
 
+
 	// 관리자 계정 회원 조회
 	public UserVo searchUserById(String id) {
 		Connection conn = getConnection();
@@ -144,6 +145,7 @@ public class CinemaService {
 		return result;
 	}
 
+
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(String movieTitle) {
 		Connection conn = getConnection();
@@ -151,13 +153,13 @@ public class CinemaService {
 		close(conn);
 		return movie;
 	}
-	
+	 
 	// 영화번호 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByNo(int movieNo) {
 		Connection conn = getConnection();
 		MovieVo movie = cd.chkMovieByNo(conn,movieNo);
 		close(conn);
-		return movie;
+		return movie; 
 	}
 	
 	// 영화 정보 추가 : 영화명, 러닝타임, 연령제한, 가격, 누적관객수를 입력받아서 영화테이블에 인서트

@@ -1,5 +1,5 @@
 package cinema_project.common;
- 
+  
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
-
+ 
 public class CinemaTemplate {
 	public static Connection getConnection() {
 		Connection conn = null;

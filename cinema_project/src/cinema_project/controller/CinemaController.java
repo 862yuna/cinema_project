@@ -44,7 +44,7 @@ public class CinemaController {
 		ScreenVo result = cs.findScreenExist(date, time, title);
 		return result;
 	}
-	
+	 
 	// 영화 연령 제한 확인 메소드
 	public int ageLimitCheck(String title, UserVo user) {
 		int result = cs.ageLimitCheck(title, user);
@@ -91,6 +91,7 @@ public class CinemaController {
 	public int editUser(String pw) {
 		return cs.editUser(pw);
 	}
+ 
 	// 회원 검색(아이디)
 	public UserVo searchUserById(String id) {
 		return cs.searchUserById(id);
@@ -103,6 +104,7 @@ public class CinemaController {
 	public int adminDeleteUser(String id) {
 		return cs.adminDeleteUser(id);
 	}
+
 	// 영화명 기준 체크 : 영화테이블에 해당 영화가 존재하는지
 	public MovieVo chkMovieByTitle(String movieTitle) {
 		return cs.chkMovieByTitle(movieTitle);

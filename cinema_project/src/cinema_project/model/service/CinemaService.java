@@ -115,4 +115,18 @@ public class CinemaService {
 		close(conn);
 		return list;
 	}
+
+	public int insertScreen(int mvNo, String scDate, String scTime, int thNo) {
+		Connection conn = getConnection();
+		int result = cd.insertScreen(conn, mvNo, scDate, scTime, thNo);
+		close(conn);
+		return result;
+	}
+
+	public int deleteScreen(int scNo) {
+		Connection conn = getConnection();
+		int result = cd.deleteScreen(conn, scNo);
+		close(conn);
+		return result;
+	}
 }

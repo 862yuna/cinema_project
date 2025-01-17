@@ -68,4 +68,12 @@ public class CinemaController {
 	public List<MovieVo> selectMovieAll() {
 		return cs.selectMovieAll();
 	}
+
+	public int insertScreeen(int mvNo, String scDate, String scTime, int thNo) {
+		return cs.insertScreen(mvNo, scDate, scTime, thNo);
+	}
+
+	public int deleteScreen(int scNo) {
+		return cs.deleteScreen(scNo);
+	}
 }

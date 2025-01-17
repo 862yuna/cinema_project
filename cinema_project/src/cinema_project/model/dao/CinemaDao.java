@@ -331,5 +331,46 @@ public class CinemaDao {
 		}
 		return list;
 	}
+
+	public int insertScreen(Connection conn, int mvNo, String scDate, String scTime, int thNo) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		try {
+			String sql = "INSERT INTO c_screen (movie_no ,screen_date ,screen_time ,theater_no) VALUES (? ,? ,? ,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mvNo);
+			pstmt.setString(2, scDate);
+			pstmt.setString(3, scTime);
+			pstmt.setInt(4, thNo);
+			
+			result = pstmt.executeUpdate();	
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int deleteScreen(Connection conn, int scNo) {
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		try {
+			String sql = "DELETE FROM c_screen WHERE screen_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, scNo);
+			
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
 

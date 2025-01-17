@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;
 import cinema_project.model.vo.MovieVo;
+import cinema_project.model.vo.ScreenVo;
 import cinema_project.model.vo.UserVo;
 
 public class CinemaMenu {
@@ -32,6 +33,7 @@ public class CinemaMenu {
 	}
 	// 회원가입 
 	public void insertUser() {
+		System.out.println();
 		System.out.println("*** 회원 가입 ***");
 		while(true) {
 			System.out.print("아이디 입력 : ");
@@ -67,6 +69,7 @@ public class CinemaMenu {
 
 	// 로그인
 	public void login() {
+			System.out.println();
 			System.out.println("*** 로그인 ***");
 			System.out.print("아이디 : ");
 			String userId = sc.nextLine();
@@ -76,6 +79,7 @@ public class CinemaMenu {
 			if(user != null) {
 				// 관리자 아이디로 로그인시 관리자메뉴로 이동
 				if(userId.equals("admin")) {
+				System.out.println();
 				System.out.println(user.getUser_name()+"님 환영합니다!");
 				if(user.getUser_id().equals("admin")) {
 					//관리자 메뉴 호출 부탁해염 
@@ -91,6 +95,7 @@ public class CinemaMenu {
 
 	// 사용자 메뉴
 	public void userMenu(UserVo user) {
+		System.out.println();
 		System.out.println("*** 사용자 메뉴 ***");
 		System.out.println("1. 티켓 예매하기");
 		System.out.println("2. 예매 내역 조회");
@@ -125,6 +130,7 @@ public class CinemaMenu {
 	
 	// 사용자 메뉴(마이페이지)
 	public void myPage(UserVo user) {
+		System.out.println();
 		System.out.println("*** 마이페이지 ***");
 		System.out.println("메뉴를 선택해주세요");
 		System.out.println("1. 회원 정보 수정");
@@ -144,6 +150,7 @@ public class CinemaMenu {
 	
 	// 사용자 메뉴(마이페이지 - 회원 정보 수정)
 	public void editUser(UserVo user) {
+		System.out.println();
 		System.out.println("*** 회원 정보 수정 ***");
 		System.out.print("비밀번호를 다시 입력하세요 : ");
 		String pw = sc.nextLine();
@@ -157,6 +164,7 @@ public class CinemaMenu {
 	}
 	// 사용자 메뉴(마이페이지 - 회원 탈퇴)
 	public void deleteUser(UserVo user) {
+		System.out.println();
 		System.out.println("*** 회원 탈퇴 ***");
 		System.out.print("비밀번호를 다시 입력하세요 : ");
 		String pw = sc.nextLine();
@@ -170,6 +178,7 @@ public class CinemaMenu {
 	// 관리자 메뉴
 	public void adminMenu() {
 		while(true) {
+			System.out.println();
 			System.out.println("*** 관리자 메뉴 ***");
 			System.out.println("1. 회원관리");
 			System.out.println("2. 영화관리");
@@ -201,6 +210,7 @@ public class CinemaMenu {
 	
 	// 회원 관리
 	public void manageUser() {
+		System.out.println();
 		System.out.println("*** 회원 관리 ***");
 		System.out.println("1. 회원 조회");
 		System.out.println("2. 관리자 메뉴 돌아가기");
@@ -222,6 +232,7 @@ public class CinemaMenu {
 	
 	// 회원 검색(아이디)
 	private void searchUser() {
+		System.out.println();
 		System.out.println("*** 회원 조회 ***");
 		System.out.print("조회 아이디 : ");
 		String id = sc.nextLine();
@@ -304,6 +315,7 @@ public class CinemaMenu {
 		// 영화 관리 
 		public void manageMovie() {
 			while(true) {			
+				System.out.println();
 				System.out.println("*** 영화 관리 ***");
 				System.out.println("1. 영화 정보 추가");
 				System.out.println("2. 영화 정보 삭제");
@@ -331,6 +343,7 @@ public class CinemaMenu {
 		// 상영정보 관리 - 추가
 		public void manageScreen() {
 			while(true) {
+				System.out.println();
 				System.out.println("*** 상영 관리 ***");
 				System.out.println("1. 상영정보 조회");
 				System.out.println("2. 상영정보 추가");
@@ -342,10 +355,13 @@ public class CinemaMenu {
 				
 				switch(menu) {
 				case 1:
+					//selectScreenAll();
 					break;
 				case 2:
+					insertScreen();
 					break;
 				case 3:
+					deleteScreen();
 					break;
 				case 4:
 					return;
@@ -356,8 +372,39 @@ public class CinemaMenu {
 			}
 		}
 	
+		private void deleteScreen() {
+			System.out.println();
+			System.out.println("*** 상영 정보 삭제 ***");
+//			selectScreenAll();
+			System.out.print("삭제 할 번호 : ");
+			int scNo = sc.nextInt();
+			sc.nextLine();
+			int result = cc.deleteScreen(scNo);
+			printResult(result, "삭제");
+			
+		}
+		// 상영 정보 추가
+		public void insertScreen() {
+			System.out.println();
+			System.out.println("*** 상영 정보 추가 ***");
+			selectMovieAll();
+			System.out.print("영화 번호 : ");
+			int mvNo = sc.nextInt();
+			sc.nextLine();
+			System.out.print("상영 날짜(yyyy-mm-dd) : ");
+			String scDate = sc.nextLine();
+			System.out.print("상영 시간(hh:mm) : ");
+			String scTime = sc.nextLine();
+			System.out.print("상영관 번호 : ");
+			int thNo = sc.nextInt();
+			sc.nextLine();
+			
+			int result = cc.insertScreeen(mvNo,scDate,scTime,thNo);
+		}
+		
 		// 영화 정보 추가
 		public void insertMovie() {
+			System.out.println();
 			System.out.println("*** 영화 정보 추가 ***");
 			System.out.println("조건에 맞게 입력해주세요.");
 			System.out.print("제목 : ");
@@ -404,6 +451,7 @@ public class CinemaMenu {
 	
 		// 영화 정보 삭제
 		public void deleteMovie() {
+			System.out.println();
 			System.out.println("*** 영화 정보 삭제 ***");
 			selectMovieAll();
 			System.out.println("삭제할 영화번호를 입력해주세요.");

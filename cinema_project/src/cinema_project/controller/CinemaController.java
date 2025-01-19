@@ -62,6 +62,13 @@ public class CinemaController {
 		return movieList;
 	}
 	
+
+	
+	// 예매 취소 결과 확인
+	public int cancelTicket() {
+		return 0;
+	}
+	
 	public int loginMember(String id,String pw) {
 		return 0;
 	}

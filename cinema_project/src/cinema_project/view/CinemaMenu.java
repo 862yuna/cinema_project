@@ -105,7 +105,7 @@ public class CinemaMenu {
 		switch(menu) {
 			case 1 : reserveTicket(user); break;
 			case 2 : selectByMyTicket(); break;
-			case 3 : cancelTicket(); break;
+			case 3 : cancelTicket(user); break;
 			case 4 : myPage(user); break;
 			default : System.out.println("처음으로 돌아갑니다.");
 		}
@@ -210,7 +210,9 @@ public class CinemaMenu {
 	}
 	
 	// 사용자 메뉴(예매 취소)
-	public void cancelTicket() {
+	public void cancelTicket(UserVo user) {
+		System.out.println("*** 예매 취소 ***");
+		
 		
 	}
 	

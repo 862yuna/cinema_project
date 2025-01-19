@@ -98,7 +98,9 @@ public class CinemaDao {
 		return reserved;
 	}
 	
-	// 좌석 예약하는 메소드
+	
+	
+	// 좌석 예약하는 메소드;
 	public int reverseSeat(int number, ScreenVo screen, UserVo user, Connection conn) {
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;

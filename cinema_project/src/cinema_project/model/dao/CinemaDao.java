@@ -308,15 +308,17 @@ public class CinemaDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			String sql = "INSERT INTO c_user(user_id ,user_pw ,user_name ,user_birth ,user_email ,user_phone) "
-					+ "VALUES(?,?,?,?,?,?);";
+			String sql = "INSERT INTO c_user(user_no,user_id ,user_pw ,user_name ,user_birth ,user_email ,user_phone) "
+					+ "VALUES(?,?,?,?,?,?,?);";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,user.getUser_id());
-			pstmt.setString(2,user.getUser_pw());
-			pstmt.setString(3,user.getUser_name());
-			pstmt.setString(4,user.getUser_birth());
-			pstmt.setString(5,user.getUser_email());
-			pstmt.setString(6,user.getUser_phone());
+			
+			pstmt.setInt(1,user.getUser_no());
+			pstmt.setString(2,user.getUser_id());
+			pstmt.setString(3,user.getUser_pw());
+			pstmt.setString(4,user.getUser_name());
+			pstmt.setString(5,user.getUser_birth());
+			pstmt.setString(6,user.getUser_email());
+			pstmt.setString(7,user.getUser_phone());
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -369,7 +371,7 @@ public class CinemaDao {
 			pstmt.setString(2, userPw);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				user.setUser_no(rs.getInt("userno"));
+				user.setUser_no(rs.getInt("user_no"));
 				user.setUser_id(rs.getString("user_id"));
 				user.setUser_pw(rs.getString("user_pw"));
 				user.setUser_name(rs.getString("user_name"));

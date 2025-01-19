@@ -4,19 +4,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;
+import cinema_project.model.dao.CinemaDao;
 import cinema_project.model.vo.MovieVo;
-
-import cinema_project.model.vo.ScreenVo;
-
 import cinema_project.model.vo.PaymentVo;
 import cinema_project.model.vo.ReservationVo;
 import cinema_project.model.vo.ScreenVo;
-
 import cinema_project.model.vo.UserVo;
 
 public class CinemaMenu {
 	private Scanner sc = new Scanner(System.in);
 	private CinemaController cc = new CinemaController();
+	private ReservationVo rv = new ReservationVo();
 	
 	// 메인메뉴
 	public void mainMenu() {
@@ -212,7 +210,9 @@ public class CinemaMenu {
 	// 사용자 메뉴(예매 내역 조회)
 	public void selectByMyTicket(UserVo user) {
 		System.out.println("*** 예매 내역 조회 ***");
-		List reservationList = cc.selectByMyTicket(user.getUser_no());
+		List<ReservationVo> reservationList = cc.selectByMyTicket(user.getUser_no());
+		rv.revervationView(reservationList);
+		
 	}
 	
 	// 사용자 메뉴(예매 취소)

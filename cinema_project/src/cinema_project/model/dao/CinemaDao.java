@@ -310,18 +310,23 @@ public class CinemaDao {
 		List<ReservationVo> list = new ArrayList<ReservationVo>();
 			
 		try {
-			String sql = "SELECT * FROM c_reservation "
-					+ "WHERE user_no = ?";
+			String sql = "SELECT m.movie_title, s.screen_date, s.screen_time, s.theater_no, r.amount "
+					+ "FROM c_reservation "
+					+ "JOIN c_screen "
+					+ "ON r.screen_no = s.screen_no "
+					+ "JOIN c_movie "
+					+ "ON s.movie_no = m.movie_no;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userNo);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ReservationVo reservation = new ReservationVo();
-//				reservation.setAmount(rs.);
-//				reservation.setRes_no(userNo);
-//				reservation.setScreen_no(userNo);
-//				reservation.setUser_no(userNo);
-//				list.add(reservation);
+				reservation.setMovieTitle(rs.getString("movie_title"));
+				reservation.setScreenDate(rs.getString("screen_date"));
+				reservation.setSreenTime(rs.getString("screen_time"));
+				reservation.setTheaterNo(rs.getInt("theater_no"));
+				reservation.setAmount(rs.getInt("amount"));
+				list.add(reservation);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -63,6 +63,17 @@ public class CinemaController {
 		return movieList;
 	}
 	
+	//유저 번호로 예매 내역 조회
+	public List<ReservationVo> selectByMyTicket(int userNo){
+		List<ReservationVo> reservationList = cs.selectByMyTicket(userNo);
+		return reservationList;
+	}
+	
+	// 예매 취소 결과 확인
+	public int cancelTicket() {
+		return 0;
+	}
+	
 	public int loginMember(String id,String pw) {
 		return 0;
 	}

@@ -304,6 +304,36 @@ public class CinemaDao {
 		}
 		return list;
 	}
+	
+	//유저 번호로 예매 내역 조회
+	public List<ReservationVo> selectByMyTicket(int userNo, Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ReservationVo> list = new ArrayList<ReservationVo>();
+			
+		try {
+			String sql = "SELECT * FROM c_reservation "
+					+ "WHERE user_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ReservationVo reservation = new ReservationVo();
+//				reservation.setAmount(rs.);
+//				reservation.setRes_no(userNo);
+//				reservation.setScreen_no(userNo);
+//				reservation.setUser_no(userNo);
+//				list.add(reservation);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+		
+	}
 
 	//회원가입
 	public int insertUser(UserVo user, Connection conn) {

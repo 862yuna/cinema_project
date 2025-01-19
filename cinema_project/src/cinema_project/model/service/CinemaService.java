@@ -82,6 +82,13 @@ public class CinemaService {
 		return movieList;
 	}
 		
+	// 유저 번호로 예매 내역 조회
+	public List<ReservationVo> selectByMyTicket(int userNo){
+		Connection conn = getConnection();
+		List<ReservationVo> reservationList = cd.selectByMyTicket(userNo, conn);
+		close(conn);
+		return reservationList;
+	}
 
 	//회원가입
 	public int insertUser(UserVo uv) {

@@ -104,7 +104,7 @@ public class CinemaMenu {
 		sc.nextLine();
 		switch(menu) {
 			case 1 : reserveTicket(user); break;
-			case 2 : selectByMyTicket(); break;
+			case 2 : selectByMyTicket(user); break;
 			case 3 : cancelTicket(user); break;
 			case 4 : myPage(user); break;
 			default : System.out.println("처음으로 돌아갑니다.");
@@ -205,8 +205,9 @@ public class CinemaMenu {
 	}
 	
 	// 사용자 메뉴(예매 내역 조회)
-	public void selectByMyTicket() {
-		
+	public void selectByMyTicket(UserVo user) {
+		System.out.println("*** 예매 내역 조회 ***");
+		List reservationList = cc.selectByMyTicket(user.getUser_no());
 	}
 	
 	// 사용자 메뉴(예매 취소)

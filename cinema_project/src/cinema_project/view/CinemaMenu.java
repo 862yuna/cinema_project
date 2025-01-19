@@ -6,6 +6,8 @@ import java.util.Scanner;
 import cinema_project.controller.CinemaController;
 import cinema_project.model.vo.MovieVo;
 
+import cinema_project.model.vo.ScreenVo;
+
 import cinema_project.model.vo.PaymentVo;
 import cinema_project.model.vo.ReservationVo;
 import cinema_project.model.vo.ScreenVo;
@@ -15,9 +17,11 @@ import cinema_project.model.vo.UserVo;
 public class CinemaMenu {
 	private Scanner sc = new Scanner(System.in);
 	private CinemaController cc = new CinemaController();
+	
 	// 메인메뉴
 	public void mainMenu() {
 		System.out.println("환영합니다.");
+		
 		while(true) {
 			System.out.println("*** 메뉴를 선택해주세요 ***");
 			System.out.println("1. 회원 가입");
@@ -35,7 +39,8 @@ public class CinemaMenu {
 			}
 		}
 	}
-	// 회원가입 
+	
+	// 회원가입
 	public void insertUser() {
 		System.out.println("*** 회원 가입 ***");
 		while(true) {
@@ -69,7 +74,7 @@ public class CinemaMenu {
 			}
 		}	
 	}
-
+	
 	// 로그인
 	public void login() {
 			System.out.println("*** 로그인 ***");
@@ -91,7 +96,7 @@ public class CinemaMenu {
 				System.out.println("비밀번호 혹은 아이디가 일치하지 않습니다.");
 			}
 	}
-
+	
 	// 사용자 메뉴
 	public void userMenu(UserVo user) {
 		System.out.println("*** 사용자 메뉴 ***");
@@ -243,6 +248,7 @@ public class CinemaMenu {
 		System.out.println("*** 회원 정보 수정 ***");
 		
 	}
+	
 	// 사용자 메뉴(마이페이지 - 회원 탈퇴)
 	public void deleteUser(UserVo user) {
 		System.out.println("*** 회원 탈퇴 ***");
@@ -280,7 +286,7 @@ public class CinemaMenu {
 			System.out.println("2. 영화관리");
 			System.out.println("3. 상영정보관리");
 			System.out.println("4. 로그아웃");
-			System.out.print("메뉴  : ");
+			System.out.print("메뉴 : ");
 			int menu = sc.nextInt();
 			sc.nextLine();
 			
@@ -337,42 +343,33 @@ public class CinemaMenu {
 			System.out.println(user);
 			System.out.println();
 //			System.out.println("1. 회원 등급 수정");
-			System.out.println("1. 회원 삭제");
-			System.out.print("메뉴 : ");
-			int menu = sc.nextInt();
-			sc.nextLine();
-			
-			switch (menu) {
-			case 1:
-//				adminEditUser(id);
+			System.out.println("해당 회원의 삭제를 진행하시려면 x을 눌러주세요. (취소하시려면 아무키나 눌러주세요)");
+			System.out.print("입력 : ");
+			String menu = sc.nextLine();
+				
+			if("x".equalsIgnoreCase(menu)) {
 				adminDeleteUser(id);
-				break;
-			default:
-				break;
 			}
 		} else {
-			System.out.println("조회된 결과가 없습니다.");
+			System.out.println("해당 회원이 존재하지 않습니다.");
 		}
 	}
 	
 	// 회원 삭제
 	public void adminDeleteUser(String id) {
-		System.out.println("1을 한번 더 누르면 삭제됩니다. (취소하시려면 아무키나 눌러주세요)");
-		int menu = sc.nextInt();
-		sc.nextLine();
+		System.out.println("x를 한번 더 누르면 삭제됩니다. (취소하시려면 아무키나 눌러주세요)");
+		System.out.print("입력 : ");
+		String menu = sc.nextLine();
 		
-		switch (menu) {
-		case 1:
+		if("x".equalsIgnoreCase(menu)) {
 			int result = cc.adminDeleteUser(id);
 			if(result>0) {
 				System.out.println("삭제되었습니다.");
 			}else {
 				System.out.println("삭제 시도 중 오류가 발생하였습니다.");
 			}
-			break;
-		default:
+		} else {
 			System.out.println("취소되었습니다.");
-			return;
 		}
 	}
 	
@@ -404,153 +401,172 @@ public class CinemaMenu {
 //			System.out.println("수정 중 오류가 발생되었습니다.");
 //		}
 //	}
-	
-	
-		// 영화 관리 
-		public void manageMovie() {
-			while(true) {			
-				System.out.println("*** 영화 관리 ***");
-				System.out.println("1. 영화 정보 추가");
-				System.out.println("2. 영화 정보 삭제");
-				System.out.println("3. 관리자 메뉴로 돌아가기");
-				System.out.print("메뉴 : ");
-				int menu = sc.nextInt();
-				sc.nextLine();
-				
-				switch(menu) {
-				case 1:
-					insertMovie();
-					break;
-				case 2:
-					deleteMovie();
-					break;
-				case 3:
-					return;
-				default:
-					System.out.println("올바른 메뉴를 선택해주세요.");
-					continue;
-				}
+	 
+	// 영화 관리 
+	public void manageMovie() {
+		while(true) {
+			System.out.println("*** 영화 관리 ***");
+			System.out.println("1. 영화 정보 조회");
+			System.out.println("2. 영화 정보 추가");
+			System.out.println("3. 영화 정보 삭제");
+			System.out.println("4. 관리자 메뉴로 돌아가기");
+			System.out.print("메뉴 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
+
+			switch(menu) {
+			case 1:
+				selectMovieAll();
+				break;
+			case 2:
+				insertMovie();
+				break;
+			case 3:
+				deleteMovie();
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("올바른 메뉴를 선택해주세요.");
+				continue;
+
 			}
-		}
 		
-		// 상영정보 관리 - 추가
-		public void manageScreen() {
-			while(true) {
-				System.out.println("*** 상영 관리 ***");
-				System.out.println("1. 상영정보 조회");
-				System.out.println("2. 상영정보 추가");
-				System.out.println("3. 상영정보 삭제");
-				System.out.println("4. 관리자 메뉴로 돌아가기");
-				System.out.print("메뉴 : ");
-				int menu = sc.nextInt();
-				sc.nextLine();
-				
-				switch(menu) {
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 4:
-					return;
-				default:
-					System.out.println("올바른 메뉴를 선택해주세요.");
-					continue;
-				}
-			}
-
 		}
-
-		// 영화 정보 추가
-		public void insertMovie() {
-			System.out.println("*** 영화 정보 추가 ***");
-			System.out.println("조건에 맞게 입력해주세요.");
-			System.out.print("제목 : ");
-			String movieTitle = sc.nextLine();
-				
-			MovieVo movie = cc.chkMovieByTitle(movieTitle);
-			
-			if(movie != null) {
-				System.out.println("이미 해당 영화명을 가진 영화가 존재합니다.");
-				System.out.println(">> 영화명이 동일할 경우 부제, 연도 등을 적어서 다르게 표현해주세요 <<");
-			} else {
-				System.out.print("러닝타임(숫자) : ");
-				int movieRuntime = sc.nextInt();
-				sc.nextLine();
-					
-				System.out.print("연령제한(All, 15, 19) : ");
-				String ageLimit = sc.nextLine();
-				
-				System.out.print("가격(숫자) : ");
-				int moviePrice = sc.nextInt();
-				sc.nextLine();
-				
-				System.out.print("누적 관객수(숫자) : ");
-				int watched = sc.nextInt();
-				sc.nextLine();
-				
-				System.out.print("정말 추가하시려면 'Y'를 입력해주세요(돌아가려면 아무키나 눌러주세요) : ");
-				String chkInsert = sc.nextLine();
-				
-				if("y".equalsIgnoreCase(chkInsert)) {
-					int result = cc.insertMovieInfo(movieTitle, movieRuntime, ageLimit, moviePrice, watched);
-					
-					if(result > 0) {
-						System.out.println("영화 정보 추가가 완료되었습니다.");
-					} else {
-						System.out.println("영화 정보 추가 도중 문제가 발생하였습니다.");
-					}
-				} else {
-					System.out.println("영화 정보 추가를 취소하셨습니다.");
-					return;
-				}
-			}
-		}
+	}
 	
-		// 영화 정보 삭제
-		public void deleteMovie() {
-			System.out.println("*** 영화 정보 삭제 ***");
-			selectMovieAll();
-			System.out.println("삭제할 영화번호를 입력해주세요.");
-			System.out.print("삭제할 영화번호 : ");
-			int delMovieNo = sc.nextInt();
+	// 상영정보 관리 - 추가
+	public void manageScreen() {
+		while(true) {
+			System.out.println("*** 상영 관리 ***");
+			System.out.println("1. 상영정보 조회");
+			System.out.println("2. 상영정보 추가");
+			System.out.println("3. 상영정보 삭제");
+			System.out.println("4. 관리자 메뉴로 돌아가기");
+			System.out.print("메뉴 : ");
+			int menu = sc.nextInt();
 			sc.nextLine();
 			
-			MovieVo movie = cc.chkMovieByNo(delMovieNo);
-			
-			if(movie != null) {
-				System.out.print("정말 삭제하시려면 'Y'를 눌러주세요(돌아가려면 아무키나 눌러주세요) : ");
-				String chkDelete = sc.nextLine();
-				
-				if("y".equalsIgnoreCase(chkDelete)) {
-					int result = cc.deleteMovie(delMovieNo);
-					
-					if(result > 0) {
-						System.out.println("영화 정보 삭제가 정상적으로 완료되었습니다.");
-					} else {
-						System.out.println("영화 정보 삭제 중 문제가 발생하였습니다.");
-					}
-				} else {
-					System.out.println("영화 정보 삭제를 취소하셨습니다.");
-				}
-			} else {
-				System.out.println("존재하지 않는 영화번호를 입력하였습니다.");
+			switch(menu) {
+			case 1:
+				selectScreenAll();
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("올바른 메뉴를 선택해주세요.");
+				continue;
 			}
 		}
+	}
 	
-		// 영화테이블의 모든 정보를 출력해주는 메소드
-		public void selectMovieAll() {
-			List<MovieVo> list = cc.selectMovieAll();
+	// 영화 정보 추가
+	public void insertMovie() {
+		System.out.println("*** 영화 정보 추가 ***");
+		System.out.println("조건에 맞게 입력해주세요.");
+		System.out.print("제목 : ");
+		String movieTitle = sc.nextLine();
 			
-			if(list.isEmpty()) {
-				System.out.println("영화 정보가 없습니다.");
+		MovieVo movie = cc.chkMovieByTitle(movieTitle);
+		
+		if(movie != null) {
+			System.out.println("이미 해당 영화명을 가진 영화가 존재합니다.");
+			System.out.println(">> 영화명이 동일할 경우 부제, 연도 등을 적어서 다르게 표현해주세요 <<");
+		} else {
+			System.out.print("러닝타임(숫자) : ");
+			int movieRuntime = sc.nextInt();
+			sc.nextLine();
+				
+			System.out.print("연령제한(All, 15, 19) : ");
+			String ageLimit = sc.nextLine();
+			
+			System.out.print("가격(숫자) : ");
+			int moviePrice = sc.nextInt();
+			sc.nextLine();
+			
+			System.out.print("누적 관객수(숫자) : ");
+			int watched = sc.nextInt();
+			sc.nextLine();
+			
+			System.out.print("정말 추가하시려면 'Y'를 입력해주세요(돌아가려면 아무키나 눌러주세요) : ");
+			String chkInsert = sc.nextLine();
+			
+			if("y".equalsIgnoreCase(chkInsert)) {
+				int result = cc.insertMovieInfo(movieTitle, movieRuntime, ageLimit, moviePrice, watched);
+				
+				if(result > 0) {
+				System.out.println("영화 정보 추가가 완료되었습니다.");
 			} else {
-				for(MovieVo mv: list) {
-					System.out.println(mv);
-				}
+				System.out.println("영화 정보 추가 도중 문제가 발생하였습니다.");
+			}
+		} else {
+			System.out.println("영화 정보 추가를 취소하셨습니다.");
+			return;	
 			}
 		}
+	}
+	
+	// 영화 정보 삭제
+	public void deleteMovie() {
+		System.out.println("*** 영화 정보 삭제 ***");
+		selectMovieAll();
+		System.out.println("삭제할 영화번호를 입력해주세요.");
+		System.out.print("삭제할 영화번호 : ");
+		int delMovieNo = sc.nextInt();
+		sc.nextLine();
+		
+		MovieVo movie = cc.chkMovieByNo(delMovieNo);
+		
+		if(movie != null) {
+			System.out.print("정말 삭제하시려면 'Y'를 눌러주세요(돌아가려면 아무키나 눌러주세요) : ");
+			String chkDelete = sc.nextLine();
+				
+			if("y".equalsIgnoreCase(chkDelete)) {
+				int result = cc.deleteMovie(delMovieNo);
+				
+				if(result > 0) {
+					System.out.println("영화 정보 삭제가 정상적으로 완료되었습니다.");
+				} else {
+					System.out.println("영화 정보 삭제 중 문제가 발생하였습니다.");
+				}
+			} else {
+				System.out.println("영화 정보 삭제를 취소하셨습니다.");
+			}
+		} else {
+			System.out.println("존재하지 않는 영화번호를 입력하였습니다.");
+		}
+	}
+	
+	// 영화테이블의 모든 정보를 출력해주는 메소드
+	public void selectMovieAll() {
+		List<MovieVo> list = cc.selectMovieAll();
+		
+		if(list.isEmpty()) {
+			System.out.println("영화 정보가 없습니다.");
+		} else {
+			for(MovieVo mv: list) {
+				System.out.println(mv);
+			}
+		}
+	}
+	
+	// 상영정보테이블의 모든 정보를 출력해주는 메소드
+	public void selectScreenAll() {
+		System.out.println("*** 모든 상영정보 조회 ***");
+		List<ScreenVo> list = cc.selectScreenAll();
+		
+		if(list.isEmpty()) {
+			System.out.println("존재하는 상영정보가 없습니다.");
+		} else {
+			for(ScreenVo sv : list) {
+				System.out.println(sv);
+			}
+		}
+	}
 	
 	// 결과 확인하는 메소드 
 	public void printResult(int result, String menuName) {
@@ -561,4 +577,3 @@ public class CinemaMenu {
 		}
 	}
 }
-

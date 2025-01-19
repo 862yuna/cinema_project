@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import cinema_project.controller.CinemaController;
-import cinema_project.model.dao.CinemaDao;
 import cinema_project.model.vo.MovieVo;
 import cinema_project.model.vo.PaymentVo;
 import cinema_project.model.vo.ReservationVo;
@@ -272,9 +271,9 @@ public class CinemaMenu {
 			sc.nextLine();
 			while(true) {
 				switch(option) {
-				case 1 : editUserPw(user); break;
-				case 2 : editUserEmail(user); break;
-				case 3 : editUserPhone(user); break;
+				case 1 : editUserPw(user); return;
+				case 2 : editUserEmail(user); return;
+				case 3 : editUserPhone(user); return;
 				case 0 : return;
 				default : System.out.println("올바른 번호가 아닙니다.");
 				}			

@@ -98,9 +98,7 @@ public class CinemaDao {
 		return reserved;
 	}
 	
-	
-	
-	// 좌석 예약하는 메소드;
+	// 좌석 예약하는 메소드
 	public int reverseSeat(int number, ScreenVo screen, UserVo user, Connection conn) {
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
@@ -399,7 +397,6 @@ public class CinemaDao {
 
 		UserVo user = new UserVo();
 
-
 		try {
 			String sql=" SELECT * FROM c_user "
 					+ " WHERE user_id = ? AND user_pw = ?";
@@ -447,8 +444,6 @@ public class CinemaDao {
 	
 	// 회원 정보 수정(비밀번호)
 	public int editUserPw(Connection conn,UserVo user,String newPw) {
-//		System.out.println(pw);
-//		System.out.println(user.getUser_no());
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {

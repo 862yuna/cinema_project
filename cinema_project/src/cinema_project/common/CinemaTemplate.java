@@ -65,4 +65,5 @@ public class CinemaTemplate {
 			e.printStackTrace();
 		}
 	}
+	
 }

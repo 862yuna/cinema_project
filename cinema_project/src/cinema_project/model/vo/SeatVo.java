@@ -44,5 +44,4 @@ public class SeatVo {
 	public String toString() {
 		return "좌석번호:" + seat_no + ", 좌석이름:" + seat_name + ", 좌석예매상태:" + seat_status;
 	}
-
 }

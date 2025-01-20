@@ -44,5 +44,4 @@ public class TheaterVo {
 	public String toString() {
 		return "상영관번호:" + theater_no + ", 상영관이름:" + theater_name + ", 총 좌석수:" + theater_seats;
 	}
-
 }

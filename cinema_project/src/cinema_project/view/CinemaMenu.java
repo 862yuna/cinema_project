@@ -85,7 +85,6 @@ public class CinemaMenu {
 				// 관리자 아이디로 로그인시 관리자메뉴로 이동
 				if("admin".equals(user.getUser_id())) {
 
-					//관리자 메뉴 호출 부탁해염 
 					adminMenu();
 				}else {
 					userMenu(user);
@@ -399,7 +398,6 @@ public class CinemaMenu {
 			System.out.println("*** 조회 결과 ***");
 			System.out.println(user);
 			System.out.println();
-//			System.out.println("1. 회원 등급 수정");
 			System.out.println("해당 회원의 삭제를 진행하시려면 x을 눌러주세요. (취소하시려면 아무키나 눌러주세요)");
 			System.out.print("입력 : ");
 			String menu = sc.nextLine();
@@ -430,34 +428,6 @@ public class CinemaMenu {
 		}
 	}
 	
-	// 회원 등급 수정
-//	public void adminEditUser(String id) {
-//		System.out.println("*** 변경 등급 선택 ***");
-//		System.out.println("1. 일반");
-//		System.out.println("2. VIP");
-//		System.out.println("3. VVIP");
-//		System.out.println("다른 키 입력 시 취소");
-//		System.out.print("메뉴 : ");
-//		int grade = sc.nextInt();
-//		sc.nextLine();
-//		
-//		if(grade<1||grade>3) {
-//			System.out.println("취소되었습니다.");
-//			return;
-//		}
-//		int result = cc.adminEditUser(id,grade);
-//		if(result>0) {
-//			if(grade==1) {
-//				System.out.println("회원 등급이 일반 등급으로 수정되었습니다.");
-//			}else if(grade==2) {
-//				System.out.println("회원 등급이 VIP 등급으로 수정되었습니다.");
-//			}else if(grade==3) {
-//				System.out.println("회원 등급이 VVIP 등급으로 수정되었습니다.");
-//			}
-//		} else {
-//			System.out.println("수정 중 오류가 발생되었습니다.");
-//		}
-//	}
 	 
 	// 영화 관리 
 	public void manageMovie() {

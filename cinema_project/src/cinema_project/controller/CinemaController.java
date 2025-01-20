@@ -74,9 +74,6 @@ public class CinemaController {
 		return 0;
 	}
 	
-	public int loginMember(String id,String pw) {
-		return 0;
-	}
 
 	//회원가입
 	public int insertUser(String userId, String userPw, String userName, String userBirth, String userEmail, String userPhone) {

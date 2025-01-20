@@ -122,7 +122,7 @@ public class CinemaService {
 		close(conn);
 		return result;
 	}
-	// 회원 정보 수정(비밀번호)
+	// 회원 정보 수정(비밀번호) user_no 기준 체크
 	public int editUserPw(UserVo user,String newPw) {
 		Connection conn = getConnection();
 		int result = cd.editUserPw(conn,user, newPw);
@@ -130,14 +130,14 @@ public class CinemaService {
 		return result;
 	}
 	
-	//회원 정보 수정(이메일)
+	//회원 정보 수정(이메일) user_no 기준 체크
 	public int editUserEmail(UserVo user,String newMail) {
 		Connection conn = getConnection();
 		int result = cd.editUserEmail(conn,user,newMail);
 		close(conn);
 		return result;
 	}
-	// 회원 정보 수정(전화번호)
+	// 회원 정보 수정(전화번호) user_no 기준 체크
 	public int editUserPhone(UserVo user,String newPhone) {
 		Connection conn = getConnection();
 		int result = cd.editUserPhone(conn,user,newPhone);

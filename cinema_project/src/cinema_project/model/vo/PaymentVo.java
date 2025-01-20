@@ -44,5 +44,4 @@ public class PaymentVo {
 	public String toString() {
 		return "결제번호:" + pay_no + ", 예약번호:" + res_no + ", 최종결제액:" + total_pay;
 	}
-
 }

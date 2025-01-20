@@ -136,5 +136,6 @@ public class UserVo {
 		return "사용자번호:" + user_no + "\n아이디:" + user_id + "\n비밀번호:" + user_pw + "\n사용자이름:" + user_name + "\n생년월일:"
 				+ user_birth + "\n이메일:" + user_email + "\n전화번호:" + user_phone + "\n관람횟수:" + user_views;
 	}
+	
 
 }

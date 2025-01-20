@@ -55,5 +55,4 @@ public class LevelVo {
 	public String toString() {
 		return "등급 번호:" + level_no + ", 등급 이름:" + level_name + ", 할인율:" + dis_rate;
 	}
-
 }

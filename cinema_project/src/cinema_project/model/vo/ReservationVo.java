@@ -12,9 +12,6 @@ public class ReservationVo {
 	private String sreenTime;
 	private int theaterNo;
 	
-	
-	
-	
 	public ReservationVo(String movieTitle, String screenDate, String sreenTime, int theaterNo ,int amount) {
 		this.movieTitle = movieTitle;
 		this.screenDate = screenDate;
@@ -109,4 +106,5 @@ public class ReservationVo {
 		return "영화명 : "+movieTitle + ", 상영 날짜" + screenDate +", 상영 시간 : "+ sreenTime
 				+", 상영관 : "+theaterNo+"관, 예매 좌석 수 : "+ amount;
 	}
+	
 }
